@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f90e4346_fb5e7242",
+        "filename": "INFO.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 94
+      },
+      "writtenOn": "2018-06-22T17:40:18Z",
+      "side": 1,
+      "message": "This is part of the Model Onboarding project. Philippe Dooze (Orange) is the PTL. \nhttps://wiki.acumos.org/display/TSC/PTL+Nominations",
+      "range": {
+        "startLine": 7,
+        "startChar": 3,
+        "endLine": 11,
+        "endChar": 16
+      },
+      "revId": "cc88ce39232fce93f3a8bbb41314b4d79eaefb0d",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd450369_8846cd43",
+        "filename": "INFO.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 94
+      },
+      "writtenOn": "2018-06-22T17:40:18Z",
+      "side": 1,
+      "message": "#acumos would be better",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 22
+      },
+      "revId": "cc88ce39232fce93f3a8bbb41314b4d79eaefb0d",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    }
+  ]
+}
