@@ -25,6 +25,7 @@ The Acumos R Client library code is maintained by Simon Urbanek at
 
 See also:
 
+* `Acumos R client info on rforge.net <http://rforge.net/acumos/>`_
 * `NEWS <https://github.com/s-u/acumos/blob/master/NEWS>`_ for info on revisions
   to the Acumos R Client
 * `Acumos R Interface <https://github.com/s-u/acumos>`_ guide on github

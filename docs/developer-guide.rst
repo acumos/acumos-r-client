@@ -28,5 +28,7 @@ following Acumos-related R commands:
 * `push (Push a component into the Acumos repository) <https://rforge.net/doc/packages/acumos/push.html>`_
 * `run (Run-time tools for Acumos) <https://rforge.net/doc/packages/acumos/run.html>`_
 
-See `Acumos R Interface <https://github.com/s-u/acumos>`_ guide on github for
-more info.
+For more info, see:
+
+* `Acumos R client info on rforge.net <http://rforge.net/acumos/>`_
+* `Acumos R Interface <https://github.com/s-u/acumos>`_ guide on github
