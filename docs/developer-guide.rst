@@ -20,4 +20,13 @@
 Acumos R Client Developer Guide
 ===============================
 
-The Acumos R Client library code is maintained by Simon Urbanek at RForge.
+The Acumos R Client library code is maintained by Simon Urbanek at
+`RForge <https://r-forge.r-project.org/>`_, and provides details for using the
+following Acumos-related R commands:
+
+* `compose (Compose a Acumos microservice) <https://rforge.net/doc/packages/acumos/compose.html>`_
+* `push (Push a component into the Acumos repository) <https://rforge.net/doc/packages/acumos/push.html>`_
+* `run (Run-time tools for Acumos) <https://rforge.net/doc/packages/acumos/run.html>`_
+
+See `Acumos R Interface <https://github.com/s-u/acumos>`_ guide on github for
+more info.
