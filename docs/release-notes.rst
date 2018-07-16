@@ -20,4 +20,11 @@
 Acumos R Client Release Notes
 =============================
 
-The Acumos R Client library code is maintained by Simon Urbanek at RForge.
+The Acumos R Client library code is maintained by Simon Urbanek at
+`RForge <https://r-forge.r-project.org/>`_.
+
+See also:
+
+* `NEWS <https://github.com/s-u/acumos/blob/master/NEWS>`_ for info on revisions
+  to the Acumos R Client
+* `Acumos R Interface <https://github.com/s-u/acumos>`_ guide on github
