@@ -102,7 +102,7 @@ Once the model bundle is created, you can use the push() API to upload it in Acu
 
 .. code-block:: bash
 
-    acumos::push("https://url","file","username:token")
+    acumos::push("https://url","file","username:token","create","license")
 
 url can be found in the ON-BOARDING MODEL page of your Acumos portal and looks like : "hotsname:port/onboarding-app/v2/models"
 
@@ -111,6 +111,10 @@ file : component.zip
 username : your Acumos username
 
 token : Authentication token available in the Acumos portal in your profile section
+
+create : logical parameter (Boolean) to trigger the creation of microservice at the end of on-boarding process. By default create=TRUE, if you don't want to create the microservice modify the value to FALSE (create =FALSE) 
+
+license : path to the license file. The license file name must be equal to license.json
 
 You can also authenticate yourself by using the auth() API:
 
@@ -125,8 +129,4 @@ username : your Acumos username
 password : your Acumos password
 
 
-In the Response, you will receive an authentication token to be used in the acumos::push() function :
-
-.. code-block:: bash
-
-    acumos::push("url","file","token")
+In the Response, you will receive an authentication token to be used in the acumos::push() function like that : acumos::push("https://url","file","token","create","license")
