@@ -22,7 +22,7 @@
 On-Boarding an R Model
 ======================
 .. note::
-    R Client v0.2-7 was tested with the Acumos Athena platform release
+    R Client v0.2-8 was tested with the Acumos Boreas platform release
 
 Prerequisites
 =============
@@ -43,7 +43,7 @@ Before you begin:
       make
       make install
 
-#) You must have R installed on you system. Please have a look at `cran.r-project.org <https://cran.r-project.org/>`_
+#) You must have R installed on you system (R>3.4.4). Please have a look at `cran.r-project.org <https://cran.r-project.org/>`_
 
 Installing the Acumos R Client
 ==============================
@@ -93,7 +93,9 @@ RForge.
 
 If you used R under windows you could meet an issue using the acumos::compose() function due to some
 problems between R under windows and zip. If RTools is not installed on your windows environment,
-the model bundle will not be created. So please follows the installation procedure of `Rtools <https://stackoverflow.com/questions/29129681/create-zip-file-error-running-command-had-status-127>`_
+the model bundle will not be created. So please follows the installation procedure of
+`Rtools <https://cran.r-project.org/bin/windows/Rtools/i>`_ then set your environmental variables
+properly, add Rtools\bin path to the system path.
 
 Authentication and upload
 -------------------------
@@ -104,7 +106,8 @@ Once the model bundle is created, you can use the push() API to upload it in Acu
 
     acumos::push("https://url","file","username:token","create","license")
 
-url can be found in the ON-BOARDING MODEL page of your Acumos portal and looks like : "hotsname:port/onboarding-app/v2/models"
+url can be found in the ON-BOARDING MODEL page of your Acumos portal and looks like :
+"hotsname:port/onboarding-app/v2/models"
 
 file : component.zip
 
@@ -112,7 +115,9 @@ username : your Acumos username
 
 token : Authentication token available in the Acumos portal in your profile section
 
-create : logical parameter (Boolean) to trigger the creation of microservice at the end of on-boarding process. By default create=TRUE, if you don't want to create the microservice modify the value to FALSE (create =FALSE) 
+create : logical parameter (Boolean) to trigger the creation of microservice at the end of
+on-boarding process. By default create=TRUE, if you don't want to create the microservice modify the
+value to FALSE (create =FALSE) 
 
 license : path to the license file. The license file name must be equal to license.json
 
@@ -122,11 +127,13 @@ You can also authenticate yourself by using the auth() API:
 
     acumos::auth("url","username","password")
 
-url can be found in the ON-BOARDING MODEL page of your Acumos portal and lokks like "hostname:port/onboarding-app/v2/auth"
+url can be found in the ON-BOARDING MODEL page of your Acumos portal and lokks like
+"hostname:port/onboarding-app/v2/auth"
 
 username : your Acumos username
 
 password : your Acumos password
 
 
-In the Response, you will receive an authentication token to be used in the acumos::push() function like that : acumos::push("https://url","file","token","create","license")
+In the Response, you will receive an authentication token to be used in the acumos::push() function
+like that : acumos::push("https://url","file","token","create","license")
