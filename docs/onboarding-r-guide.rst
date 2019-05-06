@@ -22,7 +22,7 @@
 On-Boarding an R Model
 ======================
 .. note::
-    R Client v0.2-7 was tested with the Acumos Athena platform release
+    R Client v0.2-8 was tested with the Acumos Boreas platform release
 
 Prerequisites
 =============
@@ -43,7 +43,7 @@ Before you begin:
       make
       make install
 
-#) You must have R installed on you system. Please have a look at `cran.r-project.org <https://cran.r-project.org/>`_
+#) You must have R installed on you system (R>3.4.4). Please have a look at `cran.r-project.org <https://cran.r-project.org/>`_
 
 Installing the Acumos R Client
 ==============================
@@ -93,7 +93,9 @@ RForge.
 
 If you used R under windows you could meet an issue using the acumos::compose() function due to some
 problems between R under windows and zip. If RTools is not installed on your windows environment,
-the model bundle will not be created. So please follows the installation procedure of `Rtools <https://stackoverflow.com/questions/29129681/create-zip-file-error-running-command-had-status-127>`_
+the model bundle will not be created. So please follows the installation procedure of
+`Rtools <https://cran.r-project.org/bin/windows/Rtools/i>`_ then set your environmental variables
+properly, add Rtools\bin path to the system path.
 
 Authentication and upload
 -------------------------
