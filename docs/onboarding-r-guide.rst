@@ -18,9 +18,9 @@
 .. NOTE: THIS FILE IS LINKED TO FROM THE DOCUMENTATION PROJECT
 .. IF YOU CHANGE THE LOCATION OR FILE NAME, YOU MUST UPDATE THE DOCS PROJECT INDEX.RST
 
-======================
-On-Boarding an R Model
-======================
+=========================
+R Model On-Boarding guide
+=========================
 .. note::
     R Client v0.2-8 was tested with the Acumos Boreas platform release
 
@@ -119,7 +119,7 @@ create : logical parameter (Boolean) to trigger the creation of microservice at 
 on-boarding process. By default create=TRUE, if you don't want to create the microservice modify the
 value to FALSE (create =FALSE) 
 
-license : path to the license file. The license file name must be equal to license.json
+license : path to the license file : "license.json". After onboarding the model with license, the artifacts will show license file with name "license.json" even if user has uploaded the license file with different name.
 
 You can also authenticate yourself by using the auth() API:
 
