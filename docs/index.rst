@@ -25,4 +25,3 @@ Acumos R Client
 
        release-notes
        developer-guide
-       onboarding-r-guide

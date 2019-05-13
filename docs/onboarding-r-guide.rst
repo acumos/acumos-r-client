@@ -18,9 +18,9 @@
 .. NOTE: THIS FILE IS LINKED TO FROM THE DOCUMENTATION PROJECT
 .. IF YOU CHANGE THE LOCATION OR FILE NAME, YOU MUST UPDATE THE DOCS PROJECT INDEX.RST
 
-======================
-On-Boarding an R Model
-======================
+=========================
+R Model On-Boarding guide
+=========================
 .. note::
     R Client v0.2-8 was tested with the Acumos Boreas platform release
 
@@ -28,7 +28,7 @@ Prerequisites
 =============
 Before you begin:
 
-#) You must have the following packages installed in your system : protobuf-compiler, protobuf-c-compiler, libprotobuf-c-dev, libprotobuf-dev,libprotoc-dev
+#) You must have the following packages installed in your system : protobuf-compiler,protobuf-c-compiler, libprotobuf-c-dev, libprotobuf-dev,libprotoc-dev
 
 #) You must have an Acumos account
 
@@ -78,9 +78,9 @@ Using the Acumos R Client
 Model bundle
 ------------
 
-To create the model bundle, use acumos::compose() with the functions to expose.
-If type specs are not defined, they default to c(x="character"). The model
-bundle (named component.amc) is in fatc a zip file that contains three distinct files :
+To on-board a model in Acumos you need to create a model bundle, use acumos::compose() with the 
+functions to expose to create it. If type specs are not defined, they default to c(x="character").
+The model bundle (named component.amc) is in fatc a zip file that contains three distinct files :
 
 #) meta.json defining the component and their metadata,
 #) component.bin the binary payload,
@@ -100,7 +100,10 @@ properly, add the bin folder of Rtools to the system path.
 Authentication and upload
 -------------------------
 
-Once the model bundle is created, you can use the push() API to upload it in Acumos.
+#) CLI on-boarding
+
+Once the model bundle is created, you can use the push() API to upload it in Acumos. This CLI
+(Command Line Interface) on-boarding.
 
 .. code-block:: bash
 
@@ -117,9 +120,11 @@ token : Authentication token available in the Acumos portal in your profile sect
 
 create : logical parameter (Boolean) to trigger the creation of microservice at the end of
 on-boarding process. By default create=TRUE, if you don't want to create the microservice modify the
-value to FALSE (create =FALSE) 
+value to FALSE (create =FALSE)
 
-license : path to the license file. The license file name must be equal to license.json
+license : path to the license file : "license.json". After onboarding the model with license,
+the artifacts will show license file with name "license.json" even if user has uploaded the license
+file with different name.
 
 You can also authenticate yourself by using the auth() API:
 
@@ -137,3 +142,9 @@ password : your Acumos password
 
 In the Response, you will receive an authentication token to be used in the acumos::push() function
 like that : acumos::push("https://url","file","token","create","license")
+
+#) Web on-boarding
+
+You can also drag & drop your model bundle on the "ON-BORADING BY WEB" page in your Acumos instance,
+or browse you model bundle from this page.
+
