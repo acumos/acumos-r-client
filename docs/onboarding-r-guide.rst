@@ -32,34 +32,21 @@ Before you begin:
 
 #) You must have an Acumos account
 
-#) You must have protobuf 3 installed on your system (version 2 will not work).
-
-   .. code:: bash
-
-      git clone https://github.com/google/protobuf.git protobuf
-      cd protobuf
-      ./autogen.sh
-      ./configure --prefix=`pwd`/../`uname -m`-linux-gnu
-      make
-      make install
-
 #) You must have R installed on you system (R>3.4.4). Please have a look at `cran.r-project.org <https://cran.r-project.org/>`_
 
 Installing the Acumos R Client
 ==============================
 
-Within R you need to install and load all dependent packages from CRAN first.
+Install the Acumos R Client package and RProtobuf package thanks to the following command:
 
 .. code:: bash
 
-    install.packages(c("Rcpp","RCurl","RUnit","rmarkdown","knitr","pinp","xml2"))
-    library(Rcpp,Rcurl,RUnit,rmarkdown,knitr,pinp)
+    install.packages("acumos")
 
-Then Install the Acumos R Client package and RProtobuf package thanks to the following command:
+or
 
 .. code:: bash
 
-    install.packages("RProtoBuf")
     install.packages("acumos",,c("http://r.research.att.com","http://rforge.net"))
 
 
@@ -70,6 +57,12 @@ Alternatively, to install from sources:
     git clone git@github.com:s-u/acumos.git or git clone https://github.com/s-u/acumos.git
     R CMD build acumos
     R CMD INSTALL acumos_*.tar.gz
+
+Then intall RProtobuf
+
+.. code:: bash
+
+    install.packages("RProtoBuf")
 
 
 Using the Acumos R Client
@@ -87,7 +80,7 @@ model.
     acumos::compose(predict=function(..., inputs=lapply(iris[-5], class)) print(as.character(predict(rf, as.data.frame(list(...))))),
     aux = list(rf = randomForest(Species ~ ., data=iris)),name="IRIS_model", file="path/to/store/the/model/bundle/IRIS_model.zip")
 
-This model bundle contains : 
+This model bundle contains :
 
 #) meta.json defining the component and their metadata,
 #) component.bin the binary payload,
@@ -104,12 +97,12 @@ the model bundle will not be created. So please follows the installation procedu
 `Rtools <https://cran.r-project.org/bin/windows/Rtools/>`_ then set your environmental variables
 properly, add the bin folder of Rtools to the system path.
 
-Authentication and upload
--------------------------
+CLI and Web on-boarding
+-----------------------
 
 - CLI on-boarding
 
-Once the model bundle is created, you can use the push() API to upload it in Acumos. This CLI
+Once the model bundle is created, you can use the push() API to on-board it in Acumos. This is CLI
 (Command Line Interface) on-boarding.
 
 .. code-block:: bash
@@ -129,9 +122,7 @@ create : logical parameter (Boolean) to trigger the creation of microservice at 
 on-boarding process. By default create=TRUE, if you don't want to create the microservice modify the
 value to FALSE (create =FALSE)
 
-license : path to the license file : "license.json". After onboarding the model with license,
-the artifacts will show license file with name "license.json" even if user has uploaded the license
-file with different name.
+license : path to the license file : The license file name must be "license.json".
 
 You can also authenticate yourself by using the auth() API:
 
@@ -154,4 +145,16 @@ like that : acumos::push("https://url","file","token","create","license")
 
 You can also drag & drop your model bundle on the "ON-BORADING BY WEB" page in your Acumos instance,
 or browse you model bundle from this page. This is Web on-boarding.
+
+You can on-board your model with a license, you just have to browse your license file or drag and drop it.
+The license file name must be : license.json. 
+
+Whatever the case, CLI or WEB on-boarding, if the license file extension is not 'json' the license
+on-boarding will not be possible and if the name is not 'license' Acumos will rename your license
+file as license.json and you will see your license file as "license-1.json" in the artifacts table.
+If you upload a new version of your license through the portal, the license number revision will be
+increased by one like that "license-2.json". To help user create the license file expected by Acumos
+a license editor is available on the web : `Acumos license editor <https://acumos-license-editor.stackblitz.io/#/>`_
+
+
 
