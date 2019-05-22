@@ -129,9 +129,7 @@ create : logical parameter (Boolean) to trigger the creation of microservice at 
 on-boarding process. By default create=TRUE, if you don't want to create the microservice modify the
 value to FALSE (create =FALSE)
 
-license : path to the license file : "license.json". After onboarding the model with license,
-the artifacts will show license file with name "license.json" even if user has uploaded the license
-file with different name.
+license : path to the license file : The license file name must be "license.json" if not, on-boarding will be rejected
 
 You can also authenticate yourself by using the auth() API:
 
