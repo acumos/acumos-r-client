@@ -21,7 +21,8 @@ Acumos R Client
 ===============
 
 .. toctree::
-       :maxdepth: 2
+       :maxdepth: 1
 
        release-notes
        developer-guide
+       onboarding-r-guide.rst
