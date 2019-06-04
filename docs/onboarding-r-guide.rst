@@ -18,9 +18,9 @@
 .. NOTE: THIS FILE IS LINKED TO FROM THE DOCUMENTATION PROJECT
 .. IF YOU CHANGE THE LOCATION OR FILE NAME, YOU MUST UPDATE THE DOCS PROJECT INDEX.RST
 
-=========================
-R Model On-Boarding guide
-=========================
+==========================
+Acumos R Client User Guide
+==========================
 .. note::
     R Client v0.2-8 was tested with the Acumos Boreas platform release
 
