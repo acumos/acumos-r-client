@@ -21,52 +21,11 @@
 ==========================
 Acumos R Client User Guide
 ==========================
-.. note::
-    R Client v0.2-8 was tested with the Acumos Boreas platform release
-
-Prerequisites
-=============
-Before you begin:
-
-#) You must have the following packages installed in your system : protobuf-compiler,protobuf-c-compiler, libprotobuf-c-dev, libprotobuf-dev,libprotoc-dev
-
-#) You must have an Acumos account
-
-#) You must have R installed on you system (R>3.4.4). Please have a look at `cran.r-project.org <https://cran.r-project.org/>`_
-
-Installing the Acumos R Client
-==============================
-
-Install the Acumos R Client package and RProtobuf package thanks to the following command:
-
-.. code:: bash
-
-    install.packages("acumos")
-
-or
-
-.. code:: bash
-
-    install.packages("acumos",,c("http://r.research.att.com","http://rforge.net"))
-
-
-Alternatively, to install from sources:
-
-.. code:: bash
-
-    git clone git@github.com:s-u/acumos.git or git clone https://github.com/s-u/acumos.git
-    R CMD build acumos
-    R CMD INSTALL acumos_*.tar.gz
-
-Then intall RProtobuf
-
-.. code:: bash
-
-    install.packages("RProtoBuf")
-
 
 Using the Acumos R Client
 =========================
+
+Please refer to the Acumos R Client Installation and Maintenance Guide prior to the following
 
 Model bundle
 ------------

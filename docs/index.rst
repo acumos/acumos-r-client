@@ -26,3 +26,4 @@ Acumos R Client
        release-notes
        developer-guide
        onboarding-r-guide.rst
+       installation-and-maintenance-guide.rst
