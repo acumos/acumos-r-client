@@ -25,7 +25,7 @@ Acumos R Client User Guide
 Using the Acumos R Client
 =========================
 
-Please refer to the Acumos R Client Installation and Maintenance Guide prior to the following
+Please refer to the `Acumos R Client Installation and Maintenance Guide <https://docs.acumos.org/en/latest/submodules/acumos-r-client/docs/installation-and-maintenance-guide.html>`_ prior to the following
 
 Model bundle
 ------------
@@ -66,7 +66,7 @@ Once the model bundle is created, you can use the push() API to on-board it in A
 
 .. code-block:: bash
 
-    acumos::push("https://url","file","username:token","create","license")
+	acumos::push("https://url","file","username:token","create","license")
 
 url can be found in the ON-BOARDING MODEL page of your Acumos portal and looks like :
 "hotsname:port/onboarding-app/v2/models"
@@ -87,7 +87,7 @@ You can also authenticate yourself by using the auth() API:
 
 .. code-block:: bash
 
-    acumos::auth("url","username","password")
+	acumos::auth("https://url","username","password")
 
 url can be found in the ON-BOARDING MODEL page of your Acumos portal and lokks like
 "hostname:port/onboarding-app/v2/auth"
@@ -98,7 +98,11 @@ password : your Acumos password
 
 
 In the Response, you will receive an authentication token to be used in the acumos::push() function
-like that : acumos::push("https://url","file","token","create","license")
+like that :
+
+.. code-block:: bash
+
+	acumos::push("https://url","file","token","create","license")
 
 - Web on-boarding
 
