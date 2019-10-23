@@ -110,14 +110,14 @@ You can also drag & drop your model bundle on the "ON-BORADING BY WEB" page in y
 or browse you model bundle from this page. This is Web on-boarding.
 
 You can on-board your model with a license, you just have to browse your license file or drag and drop it.
-The license file name must be : license.json. 
+The license file name must be : license.json.
 
 Whatever the case, CLI or WEB on-boarding, if the license file extension is not 'json' the license
 on-boarding will not be possible and if the name is not 'license' Acumos will rename your license
 file as license.json and you will see your license file as "license-1.json" in the artifacts table.
 If you upload a new version of your license through the portal, the license number revision will be
 increased by one like that "license-2.json". To help user create the license file expected by Acumos
-a license user guide is available here : `License user guide <../../security-verification/license-manager-client-library/docs/user-guide.html>`_
+a license user guide is available here : `License user guide <../../submodules/license-manager/docs/user-guide.html>`_
 
 
 
