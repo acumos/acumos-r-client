@@ -81,7 +81,7 @@ create : logical parameter (Boolean) to trigger the creation of microservice at 
 on-boarding process. By default create=TRUE, if you don't want to create the microservice modify the
 value to FALSE (create =FALSE)
 
-license : path to the license file : The license file name must be "license.json".
+license : path to the license profile file : The license profile file name must be "license.json".
 
 You can also authenticate yourself by using the auth() API:
 
@@ -109,15 +109,14 @@ like that :
 You can also drag & drop your model bundle on the "ON-BORADING BY WEB" page in your Acumos instance,
 or browse you model bundle from this page. This is Web on-boarding.
 
-You can on-board your model with a license, you just have to browse your license file or drag and drop it.
-The license file name must be : license.json.
+You can on-board your model with a license profile, you just have to browse your license profile file or drag and drop it.
 
-Whatever the case, CLI or WEB on-boarding, if the license file extension is not 'json' the license
+Whatever the case, CLI or WEB on-boarding, if the license profile file extension is not 'json' the license
 on-boarding will not be possible and if the name is not 'license' Acumos will rename your license
-file as license.json and you will see your license file as "license-1.json" in the artifacts table.
+file as license.json and you will see your license profile file as "license-1.json" in the artifacts table.
 If you upload a new version of your license through the portal, the license number revision will be
-increased by one like that "license-2.json". To help user create the license file expected by Acumos
-a license user guide is available here : `License user guide <../../../submodules/license-manager/docs/user-guide.html>`_
+increased by one like that "license-2.json". To help user create the license profile file expected by Acumos
+a license profile editor user guide is available here : `License profile editor user guide <../../submodules/license-manager/docs/user-guide-license-profile-editor.html>`_
 
 
 
