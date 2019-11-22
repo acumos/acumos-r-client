@@ -81,7 +81,7 @@ create : logical parameter (Boolean) to trigger the creation of microservice at 
 on-boarding process. By default create=TRUE, if you don't want to create the microservice modify the
 value to FALSE (create =FALSE)
 
-license profile : path to the license profile file : The license profile file name must be "license.json".
+license : path to the license profile file : The license profile file name must be "license.json".
 
 You can also authenticate yourself by using the auth() API:
 
@@ -116,4 +116,7 @@ on-boarding will not be possible and if the name is not 'license' Acumos will re
 file as license.json and you will see your license profile file as "license-1.json" in the artifacts table.
 If you upload a new version of your license through the portal, the license number revision will be
 increased by one like that "license-2.json". To help user create the license profile file expected by Acumos
-a license profile editor user guide is available here : `License profile editor user guide <../../license-manager/docs/user-guide-license-profile-editor.html>`_
+a license profile editor user guide is available here : `License profile editor user guide <../../submodules/license-manager/docs/user-guide-license-profile-editor.html>`_
+
+
+
