@@ -116,7 +116,7 @@ on-boarding will not be possible and if the name is not 'license' Acumos will re
 file as license.json and you will see your license profile file as "license-1.json" in the artifacts table.
 If you upload a new version of your license through the portal, the license number revision will be
 increased by one like that "license-2.json". To help user create the license profile file expected by Acumos
-a license profile editor user guide is available here : `License profile editor user guide <../../submodules/license-manager/docs/user-guide-license-profile-editor.html>`_
+a license profile editor user guide is available here : `License profile editor user guide <../../license-manager/docs/user-guide-license-profile-editor.html>`_
 
 
 
