@@ -28,7 +28,7 @@ Prerequisites
 =============
 Before you begin:
 
-#) You must have the following packages installed in your system : protobuf-compiler,protobuf-c-compiler, libprotobuf-c-dev, libprotobuf-dev,libprotoc-dev
+#) You must have the following packages installed in your system : protobuf-compiler, protobuf-c-compiler, libprotobuf-c-dev, libprotobuf-dev, libprotoc-dev
 
 #) You must have an Acumos account
 
@@ -41,16 +41,10 @@ Install the Acumos R Client package and RProtobuf package thanks to the followin
 
 .. code:: bash
 
-    install.packages("acumos")
-
-or
-
-.. code:: bash
-
     install.packages("acumos",,c("http://r.research.att.com","http://rforge.net"))
 
 
-Alternatively, to install from sources:
+Alternatively, you can only install Acumos from sources:
 
 .. code:: bash
 
@@ -58,7 +52,7 @@ Alternatively, to install from sources:
     R CMD build acumos
     R CMD INSTALL acumos_*.tar.gz
 
-Then intall RProtobuf
+and then intall RProtobuf in R
 
 .. code:: bash
 

@@ -46,9 +46,12 @@ This model bundle contains :
 #) and component.proto with the protobuf specs.
 
 
-Please consult R documentation page for details, i.e., use ?compose in R or see
-the `Compose <http://www.rforge.net/doc/packages/acumos/compose.html>`_ page at
-RForge.
+Please consult R documentation page for details, use the following command in R
+
+.. code:: bash
+   ??acumos
+
+or see the `Compose <http://www.rforge.net/doc/packages/acumos/compose.html>`_ page at RForge.
 
 If you used R under windows you could meet an issue using the acumos::compose() function due to some
 problems between R under windows and zip. If RTools is not installed on your windows environment,
@@ -103,6 +106,9 @@ like that :
 .. code-block:: bash
 
 	acumos::push("https://url","file","token","create","license")
+
+At the end of a successfull CLI on-boarding you will receive a message with the Acumos docker URI of your model,
+that you can use to load the Acumos docker image in your own docker registry.
 
 - Web on-boarding
 
