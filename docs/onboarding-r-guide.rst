@@ -104,6 +104,10 @@ like that :
 
 	acumos::push("https://url","file","token","create","license")
 
+At the and of the on-boarding by CLI a message response is displayed. If you have choosen to create the
+microservice after onboardign, this message response will contain the acumos model docker URI that you can 
+use to load the model docker image in you own registry.
+
 - Web on-boarding
 
 You can also drag & drop your model bundle on the "ON-BORADING BY WEB" page in your Acumos instance,
