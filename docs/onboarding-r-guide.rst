@@ -107,7 +107,7 @@ like that :
 
 	acumos::push("https://url","file","token","create","license")
 
-At the end of a successfull CLI on-boarding you will receive a message with the Acumos docker URI of your model,
+At the end of a successful CLI on-boarding you will receive a message with the Acumos docker URI of your model,
 that you can use to load the Acumos docker image in your own docker registry.
 
 - Web on-boarding
