@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ad91db9_1659d762",
+        "filename": "acumos-package/DESCRIPTION",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2020-03-04T13:31:29Z",
+      "side": 1,
+      "message": "I believe Simon is no longer the maintainer. Also he has left the company and this email address is no longer valid.",
+      "range": {
+        "startLine": 5,
+        "startChar": 12,
+        "endLine": 5,
+        "endChar": 52
+      },
+      "revId": "6d7414fb998f59a5c3f1d9ab2b4a1cd03645a99c",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e6dc4c7_addde5dd",
+        "filename": "acumos-package/man/compose.Rd",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2020-03-04T13:31:29Z",
+      "side": 1,
+      "message": "Probably should have a license header as a comment block",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "6d7414fb998f59a5c3f1d9ab2b4a1cd03645a99c",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a7b2633_dd6e1c93",
+        "filename": "acumos-package/man/push.Rd",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2020-03-04T13:31:29Z",
+      "side": 1,
+      "message": "probably should have a license header as a comment block",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 1,
+        "endChar": 5
+      },
+      "revId": "6d7414fb998f59a5c3f1d9ab2b4a1cd03645a99c",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b25e18e3_6b47a42d",
+        "filename": "acumos-package/man/run.Rd",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2020-03-04T13:31:29Z",
+      "side": 1,
+      "message": "probably should have a license header as a comment block",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "6d7414fb998f59a5c3f1d9ab2b4a1cd03645a99c",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": true
+    }
+  ]
+}
