@@ -41,13 +41,6 @@ Install the Acumos R Client package and RProtobuf package thanks to the followin
 
 .. code:: bash
 
-    install.packages("acumos",,c("http://r.research.att.com","http://rforge.net"))
-
-
-Alternatively, you can only install Acumos from sources:
-
-.. code:: bash
-
     git clone git@github.com:s-u/acumos.git or git clone https://github.com/s-u/acumos.git
     R CMD build acumos
     R CMD INSTALL acumos_*.tar.gz
