@@ -30,13 +30,12 @@ Please refer to the `Acumos R Client Installation and Maintenance Guide <install
 Model bundle
 ------------
 
-To on-board a model in Acumos you need to create a model bundle, use acumos::compose() with the
-functions to expose to create it. Below is an example of how create a model bundle based on the IRIS
-model.
+To on-board a model in Acumos you need to create a model bundle, use compose() with the functions to expose to create it. Below is an example
+of how create a model bundle based on the IRIS model.
 
 .. code:: bash
 
-    acumos::compose(predict=function(..., inputs=lapply(iris[-5], class)) print(as.character(predict(rf, as.data.frame(list(...))))),
+    compose(predict=function(..., inputs=lapply(iris[-5], class)) print(as.character(predict(rf, as.data.frame(list(...))))),
     aux = list(rf = randomForest(Species ~ ., data=iris)),name="IRIS_model", file="path/to/store/the/model/bundle/IRIS_model.zip")
 
 This model bundle contains :
@@ -59,17 +58,26 @@ the model bundle will not be created. So please follows the installation procedu
 `Rtools <https://cran.r-project.org/bin/windows/Rtools/>`_ then set your environmental variables
 properly, add the bin folder of Rtools to the system path.
 
+You can also compose your model bundle directly from the R source code you used to build your model.
+
+.. code:: bash
+
+    composeFromSource(file="path/to/your/R/script",name="name of your model", outputfile = "component.zip", addSource='T')
+
+The "addSource" parameter is a boolean that allow you to add the R source code in your modle bundle.
+
+
 CLI and Web on-boarding
 -----------------------
 
-- CLI on-boarding
+- CLI on-boarding with push() function
 
 Once the model bundle is created, you can use the push() API to on-board it in Acumos. This is CLI
 (Command Line Interface) on-boarding.
 
 .. code-block:: bash
 
-	acumos::push("https://url","file","username:token","create","license")
+	push("https://url","file","username:token","create","license")
 
 url can be found in the ON-BOARDING MODEL page of your Acumos portal and looks like :
 "hotsname:port/onboarding-app/v2/models"
@@ -78,7 +86,7 @@ file : component.zip
 
 username : your Acumos username
 
-token : Authentication token available in the Acumos portal in your profile section
+token : Api token available in the Acumos portal in your profile section
 
 create : logical parameter (Boolean) to trigger the creation of microservice at the end of
 on-boarding process. By default create=TRUE, if you don't want to create the microservice modify the
@@ -86,11 +94,24 @@ value to FALSE (create =FALSE)
 
 license : path to the license profile file : The license profile file name must be "license.json".
 
-You can also authenticate yourself by using the auth() API:
+- CLI on-boarding with pushFromSource() function
+
+Rather than create the model bundle with compose() and then on-board the model with push(), you can use the
+pushFromSource() function that allow you to on-board your model directly from your R source code and put this R 
+source code inside the model bundle.
 
 .. code-block:: bash
 
-	acumos::auth("https://url","username","password")
+        pushFromSource("https://url","file",name="name of your model",addSource=T,"username:token","create","license")
+
+- Authentication
+
+                
+The use of Api token is recommended to avoid typing your password in command line, but you can also authenticate yourself by using the auth() API:
+
+.. code-block:: bash
+
+	auth("https://url","username","password")
 
 url can be found in the ON-BOARDING MODEL page of your Acumos portal and lokks like
 "hostname:port/onboarding-app/v2/auth"
@@ -99,16 +120,10 @@ username : your Acumos username
 
 password : your Acumos password
 
+In response, you will receive an authentication token to be used in the push() or pushFromSource() function instead of "usernale:token"
 
-In the Response, you will receive an authentication token to be used in the acumos::push() function
-like that :
-
-.. code-block:: bash
-
-	acumos::push("https://url","file","token","create","license")
-
-At the end of a successful CLI on-boarding you will receive a message with the Acumos docker URI of your model,
-that you can use to load the Acumos docker image in your own docker registry.
+Whatever the function you used, at the end of a successful CLI on-boarding with microservice creation, you will receive a message with the Acumos docker URI
+of your model.
 
 - Web on-boarding
 

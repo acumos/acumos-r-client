@@ -28,33 +28,27 @@ Prerequisites
 =============
 Before you begin:
 
-#) You must have the following packages installed in your system : protobuf-compiler, protobuf-c-compiler, libprotobuf-c-dev, libprotobuf-dev, libprotoc-dev
-
 #) You must have an Acumos account
 
-#) You must have R installed on you system (R>3.4.4). Please have a look at `cran.r-project.org <https://cran.r-project.org/>`_
+#) You must have R installed on you system (R>3.4.4). Please refer to `cran.r-project.org <https://cran.r-project.org/>`_
 
-Installing the Acumos R Client
+Installing the Acumos R client
 ==============================
 
-Install the Acumos R Client package and RProtobuf package thanks to the following command:
+Under **Debian/Ubuntu**, you may need: libcurl4-openssl-dev libssl-dev protobuf-compiler libprotobuf-dev libprotoc-dev
 
 .. code:: bash
+    apt-get update
+    apt-get install -y libcurl4-openssl-dev libssl-dev protobuf-compiler libprotobuf-dev libprotoc-dev
 
-    install.packages("acumos",,c("http://r.research.att.com","http://rforge.net"))
-
-
-Alternatively, you can only install Acumos from sources:
-
-.. code:: bash
-
-    git clone git@github.com:s-u/acumos.git or git clone https://github.com/s-u/acumos.git
-    R CMD build acumos
-    R CMD INSTALL acumos_*.tar.gz
-
-and then intall RProtobuf in R
+Install the Acumos R client package in R:
 
 .. code:: bash
+    install.packages(c("httr", "jsonlite", "RProtoBuf", "Rserve")) # installing R dependencies first
+    install.packages("https://github.com/sambaala/R-acumos/archive/v0.3-0.tar.gz", repos=NULL)
 
-    install.packages("RProtoBuf")
 
+Under development version:
+
+.. code:: bash
+    remotes::install_github("att/R-acumos")
