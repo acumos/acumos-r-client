@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "615a112f_15ad571d",
+        "filename": "docs/installation-and-maintenance-guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2020-03-11T23:55:52Z",
+      "side": 0,
+      "message": "this is a very poor choice of hostname for open-source documentation. AT\u0026T hosts are not supposed to be published like this.  Please remove.",
+      "range": {
+        "startLine": 44,
+        "startChar": 34,
+        "endLine": 44,
+        "endChar": 59
+      },
+      "revId": "838de9c8486f3f8d103b6bf4228278c4dbf57ae1",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": true
+    }
+  ]
+}
