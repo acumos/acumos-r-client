@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe1c915e_cafda035",
+        "filename": "docs/installation-and-maintenance-guide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 134
+      },
+      "writtenOn": "2020-03-12T12:20:23Z",
+      "side": 1,
+      "message": "This line will need to be changed to\ninstall.packages(\"https://github.com/acumos/acumos-r-client/archive/v0.3-0.tar.gz\", repos\u003dNULL) \nonce the source code is migrated to https://github.com/acumos/acumos-r-client and the release v0.3-0 published in there.\nOnce we have published the package to CRAN, then we will only need to do: \ninstall.packages(\"acumos\")\nto install the latest release.",
+      "revId": "5bc7f9e8bf07c230c85ae5232a0faa011de2d7aa",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": true
+    }
+  ]
+}
