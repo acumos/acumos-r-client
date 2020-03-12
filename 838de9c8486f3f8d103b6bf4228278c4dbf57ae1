@@ -46,6 +46,30 @@
       "revId": "838de9c8486f3f8d103b6bf4228278c4dbf57ae1",
       "serverId": "655300a2-7a56-4504-9153-881edd907bea",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11982278_afc9f11f",
+        "filename": "docs/installation-and-maintenance-guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2020-03-12T10:37:45Z",
+      "side": 0,
+      "message": "Sorry for that Philippe, what was I thinking!?",
+      "parentUuid": "515b3708_80607e3d",
+      "range": {
+        "startLine": 44,
+        "startChar": 34,
+        "endLine": 44,
+        "endChar": 59
+      },
+      "revId": "838de9c8486f3f8d103b6bf4228278c4dbf57ae1",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": true
     }
   ]
 }
