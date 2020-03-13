@@ -82,7 +82,7 @@ Once the model bundle is created, you can use the push() API to on-board it in A
 url can be found in the ON-BOARDING MODEL page of your Acumos portal and looks like :
 "hotsname:port/onboarding-app/v2/models"
 
-file : component.zip
+file : component.zip (your model bundle)
 
 username : your Acumos username
 
@@ -97,24 +97,22 @@ license : path to the license profile file : The license profile file name must 
 - CLI on-boarding with pushFromSource() function
 
 Rather than create the model bundle with compose() and then on-board the model with push(), you can use the
-pushFromSource() function that allow you to on-board your model directly from your R source code and put this R 
+pushFromSource() function that allow you to on-board your model directly from your R source code and put this R
 source code inside the model bundle.
 
 .. code-block:: bash
 
-        pushFromSource("https://url","file",name="name of your model",addSource=T,"username:token","create","license")
+        pushFromSource("https://url",file="path/to/your/R/script",name="name of your model",addSource=T,"username:token","create","license")
 
 - Authentication
 
-                
 The use of Api token is recommended to avoid typing your password in command line, but you can also authenticate yourself by using the auth() API:
 
 .. code-block:: bash
 
 	auth("https://url","username","password")
 
-url can be found in the ON-BOARDING MODEL page of your Acumos portal and lokks like
-"hostname:port/onboarding-app/v2/auth"
+url can be found in the ON-BOARDING MODEL page of your Acumos portal and looks like "hostname:port/onboarding-app/v2/auth"
 
 username : your Acumos username
 
