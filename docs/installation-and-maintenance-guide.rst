@@ -38,7 +38,7 @@ Under **Debian/Ubuntu**, you may need *libcurl4-openssl-dev*, *libssl-dev*, *pro
 .. code:: bash 
 
     apt-get update
-    apt-get install -y libcurl4-openssl-dev libssl-dev protobuf-compiler libprotobuf-dev libprotoc-dev
+    apt-get --no-install-recommends install -y libcurl4-openssl-dev libssl-dev protobuf-compiler libprotobuf-dev libprotoc-dev
 
 Install the Acumos R client package in R:
 
