@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9b1a970_cbab4cb9",
+        "filename": "DESCRIPTION",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2020-06-24T10:20:34Z",
+      "side": 1,
+      "message": "I believe this email address is incorrect.",
+      "range": {
+        "startLine": 6,
+        "startChar": 27,
+        "endLine": 6,
+        "endChar": 51
+      },
+      "revId": "abb7add36adea4fb4f7b1541f5f48d51492457bb",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8c94113_27a2b839",
+        "filename": "NEWS",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2020-06-24T10:20:34Z",
+      "side": 1,
+      "message": "This seems to duplicate docs/release-notes.rst, is that intentional?",
+      "revId": "abb7add36adea4fb4f7b1541f5f48d51492457bb",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a0b7bd9_27ed64e8",
+        "filename": "R/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2020-06-24T10:20:34Z",
+      "side": 1,
+      "message": "invalid link",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 51
+      },
+      "revId": "abb7add36adea4fb4f7b1541f5f48d51492457bb",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3210db31_f45abc40",
+        "filename": "R/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2020-06-24T10:20:34Z",
+      "side": 1,
+      "message": "invalid link",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 47
+      },
+      "revId": "abb7add36adea4fb4f7b1541f5f48d51492457bb",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a78b7fe8_0d47e31c",
+        "filename": "R/run.R",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2020-06-24T10:20:34Z",
+      "side": 1,
+      "message": "missing copyright header, ATT/Orange/whatever",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 1
+      },
+      "revId": "abb7add36adea4fb4f7b1541f5f48d51492457bb",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67920359_803e36ac",
+        "filename": "inst/examples/example_0/acumos.R",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2020-06-24T10:20:34Z",
+      "side": 1,
+      "message": "all source code should have a copyright header",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "abb7add36adea4fb4f7b1541f5f48d51492457bb",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": true
+    }
+  ]
+}
