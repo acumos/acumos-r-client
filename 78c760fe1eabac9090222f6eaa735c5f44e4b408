@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa7a67b_6e185eaa",
+        "filename": "DESCRIPTION",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2020-06-24T12:45:36Z",
+      "side": 1,
+      "message": "I believe this email address is no longer valid.",
+      "range": {
+        "startLine": 4,
+        "startChar": 73,
+        "endLine": 4,
+        "endChar": 97
+      },
+      "revId": "78c760fe1eabac9090222f6eaa735c5f44e4b408",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": true
+    }
+  ]
+}
