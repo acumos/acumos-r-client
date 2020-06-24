@@ -1,0 +1,11 @@
+Package: acumos
+Title: Acumos R interface
+Version: 0.3-0.9000
+Authors@R: c(person("Simon", "Urbanek", role = c("aut", "cre"), email = "urbanek@research.att.com"),
+             person("Alassane", "Samba", role = "ctb", email = "alassane.samba@orange.com"))
+Maintainer: 
+Description: Functions to create and run Acumos models.
+License: Apache License (== 2.0)
+Imports: httr, jsonlite, RProtoBuf, Rserve
+Suggests: randomForest
+RoxygenNote: 7.0.2
