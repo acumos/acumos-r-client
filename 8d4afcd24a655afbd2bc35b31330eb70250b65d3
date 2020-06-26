@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f917335b_84eba8dd",
+        "filename": "Dockerfile",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2020-06-26T17:08:09Z",
+      "side": 1,
+      "message": "This dockerfile is only used to VERIFY the code.  No docker image is pushed to a Nexus.  Please extend to install appropriate Linux packages and test the code.  Even a trivial test is better than none.",
+      "revId": "8d4afcd24a655afbd2bc35b31330eb70250b65d3",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": true
+    }
+  ]
+}
