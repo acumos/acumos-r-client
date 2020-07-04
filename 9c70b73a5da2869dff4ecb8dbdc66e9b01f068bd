@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0bba643c_24b55ea5",
+        "filename": "DESCRIPTION",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2020-07-04T10:04:34Z",
+      "side": 1,
+      "message": "Should Samba Alassane be listed as the maintainer?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 10
+      },
+      "revId": "9c70b73a5da2869dff4ecb8dbdc66e9b01f068bd",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a92e42f_7b1edd30",
+        "filename": "Dockerfile",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2020-07-04T10:04:34Z",
+      "side": 1,
+      "message": "acumos",
+      "range": {
+        "startLine": 31,
+        "startChar": 12,
+        "endLine": 31,
+        "endChar": 18
+      },
+      "revId": "9c70b73a5da2869dff4ecb8dbdc66e9b01f068bd",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8e5930e_2316d23a",
+        "filename": "Dockerfile",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2020-07-04T10:04:34Z",
+      "side": 1,
+      "message": "dependencies",
+      "range": {
+        "startLine": 31,
+        "startChar": 32,
+        "endLine": 31,
+        "endChar": 44
+      },
+      "revId": "9c70b73a5da2869dff4ecb8dbdc66e9b01f068bd",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3465e7a1_ff680243",
+        "filename": "Dockerfile",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2020-07-04T10:04:34Z",
+      "side": 1,
+      "message": "dependencies",
+      "range": {
+        "startLine": 34,
+        "startChar": 28,
+        "endLine": 34,
+        "endChar": 40
+      },
+      "revId": "9c70b73a5da2869dff4ecb8dbdc66e9b01f068bd",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d696843e_a243f53a",
+        "filename": "Dockerfile",
+        "patchSetId": 9
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2020-07-04T10:04:34Z",
+      "side": 1,
+      "message": "bundle",
+      "range": {
+        "startLine": 37,
+        "startChar": 18,
+        "endLine": 37,
+        "endChar": 24
+      },
+      "revId": "9c70b73a5da2869dff4ecb8dbdc66e9b01f068bd",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab7db0e4_0909473e",
+        "filename": "Dockerfile",
+        "patchSetId": 9
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2020-07-04T10:04:34Z",
+      "side": 1,
+      "message": "I think you should remove this, the Docker image is not pushed",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 6
+      },
+      "revId": "9c70b73a5da2869dff4ecb8dbdc66e9b01f068bd",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98157c42_f7e8c2f1",
+        "filename": "acumos-package/R_client_and_dependancies.R",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2020-07-04T10:04:34Z",
+      "side": 1,
+      "message": "code files should have a license header\n\nplease correct typo \"dependencies\"",
+      "revId": "9c70b73a5da2869dff4ecb8dbdc66e9b01f068bd",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6f1ad4e_34e14d3b",
+        "filename": "acumos-package/example_iris.R",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2020-07-04T10:04:34Z",
+      "side": 1,
+      "message": "e",
+      "range": {
+        "startLine": 20,
+        "startChar": 16,
+        "endLine": 20,
+        "endChar": 17
+      },
+      "revId": "9c70b73a5da2869dff4ecb8dbdc66e9b01f068bd",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09ab3837_67d3a9a5",
+        "filename": "acumos-package/tests_install_R_client_and_dependancies.R",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2020-07-04T10:04:34Z",
+      "side": 1,
+      "message": "since this is a code file, it should have a license header\n\nyou may also wish to correct the spelling \"dependencies\" with 4 e\u0027s no a\u0027s",
+      "revId": "9c70b73a5da2869dff4ecb8dbdc66e9b01f068bd",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": true
+    }
+  ]
+}
