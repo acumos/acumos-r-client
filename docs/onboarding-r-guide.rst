@@ -37,12 +37,10 @@ of how create a model bundle based on the IRIS model.
 
 .. code-block:: bash
 
-    compose(predict = function(..., inputs=lapply(iris[-5], class)) {
-			as.character(predict(rf, as.data.frame(list(...))))
-		}, aux = list(rf = randomForest(Species ~ ., data = iris)),
-		name = "IRIS_model",
-		file = "path/to/store/the/model/bundle/IRIS_model.zip")
-
+        acumos::compose(predict = function(..., inputs=lapply(iris[-5], class)) {as.character(predict(rf, as.data.frame(list(...))))},
+                                                aux = list(rf = randomForest(Species ~ ., data = iris)),
+                            		        name = "IRIS_model",
+                               		        file = "path/to/store/the/model/bundle/IRIS_model.zip")
 
 This model bundle contains:
 
@@ -50,11 +48,12 @@ This model bundle contains:
 #) *component.bin* the binary payload,
 #) and *component.proto* with the protobuf specs.
 
-Please consult R documentation page for details, use the following command in R
+Please consult R documentation page for details, use the following commandin R
 
 .. code-block:: bash
 
    help(package="acumos")
+   ?acumos::compose()
 
 or see the `Compose <http://www.rforge.net/doc/packages/acumos/compose.html>`_ page at RForge.
 
@@ -76,10 +75,10 @@ they will also correspond to the other function type arguments of compose, namel
 
 .. code-block:: bash
 
-    composeFromSource(file = "path/to/your/R/script/acumos.R",
-		name = "MyComponentName",
-		outputfile = "component.zip",
-		addSource = TRUE)
+        acumos::composeFromSource(file = "path/to/your/R/script/acumos.R",
+                	          name = "MyComponentName",
+                	          outputfile = "component.zip",
+                                  addSource = TRUE)
 
 The "addSource" parameter is a boolean that allows you to add the R source code (*component.R*) in your model bundle.
 
@@ -100,9 +99,11 @@ Once the model bundle is created, you can use the `push()` API client to on-boar
 
 .. code-block:: bash
 
-	push(url = "https://<hostname>/onboarding-app/v2/models",
-		file = "component.zip", token = "<username>:<token>",
-		create = FALSE, license = "path/to/your/license.json")
+        acumos::push(url = "https://<hostname>/onboarding-app/v2/models",
+                     file = "component.zip",
+                     token = "<username>:<token>",
+                     create = FALSE,
+                     license = "path/to/your/license.json")
 
 url can be found in the ON-BOARDING MODEL page of your Acumos portal and looks like :
 "<hostname>/onboarding-app/v2/models"
@@ -127,17 +128,11 @@ source code inside the model bundle.
 
 .. code-block:: bash
 
-		pushFromSource(url = "https://<hostname>/onboarding-app/v2/models",
+	acumos::pushFromSource(url = "https://<hostname>/onboarding-app/v2/models",
 			file = "path/to/your/R/script/acumos.R",
 			name = "MyComponentName", addSource = FALSE,
 			token = "<username>:<token>", create = FALSE,
 			license = "path/to/your/license.json")
-
-Please refers to the help to the function `pushFromSource()` for more details on the format of the component source code file:
-
-.. code-block:: bash
-
-   help(pushFromSource)
 
 The path to an example component source code file can be found by executing the following R command:
 
@@ -151,7 +146,7 @@ The use of API token is recommended to avoid typing your password in command lin
 
 .. code-block:: bash
 
-	auth("https://<hostname>", "username", "password")
+	acumos::auth("https://<hostname>", "username", "password")
 
 url can be found in the ON-BOARDING MODEL page of your Acumos portal and looks like "https://<hostname>/onboarding-app/v2/auth"
 
