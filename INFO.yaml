@@ -55,5 +55,10 @@ committers:
       company: 'R-project'
       id: 's-u'
       timezone: 'America/New_York'
+    - name: 'Alassane Samba'
+      email: 'alassane.samba@orange.com'
+      company: 'Orange'
+      id: 'asamba'
+      timezone: 'Europe/Paris'
 tsc:
     approval: 'https://lists.acumos.org/g/tscgeneral'

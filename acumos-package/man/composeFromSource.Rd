@@ -7,6 +7,7 @@
 composeFromSource(
   file = "acumos.R",
   name = "R Component",
+  componentVersion = "unknown version",
   outputfile = "component.zip",
   addSource = T
 )
@@ -15,6 +16,8 @@ composeFromSource(
 \item{file}{string, name of component source file (an R script)}
 
 \item{name}{string, name of the component}
+
+\item{componentVersion}{string, version of the component}
 
 \item{outputfile}{string, filename for the resulting component file}
 

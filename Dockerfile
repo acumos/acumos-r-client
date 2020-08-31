@@ -18,10 +18,10 @@
 
 
 FROM r-base:4.0.2
-ARG dir=/tmp/acumos-package
+ARG dir=/tmp/acumos-r-package-test
 RUN mkdir $dir
 
-COPY acumos-package $dir/
+COPY testing $dir/
 WORKDIR $dir
 
 ### system update ####
@@ -29,13 +29,13 @@ RUN apt-get update
 RUN apt-get install -y libcurl4-openssl-dev libssl-dev protobuf-compiler libprotobuf-dev libprotoc-dev
 
 ### Install acumos-r-client and dependencies
-RUN Rscript testing/R_client_and_dependencies.R
+RUN Rscript R_client_and_dependencies.R
 
 ## test acumos-r-client and dependancies
-RUN Rscript testing/tests_install_R_client_and_dependencies.R
+RUN Rscript tests_install_R_client_and_dependencies.R
 
 ## create a model bundle
-RUN Rscript testing/example_iris.R
+RUN Rscript example_iris.R
 
 ## test if model bundle exist
 RUN  ls model_bundle_example_iris.zip >> /dev/null 2>&1 && echo "test successfull : Model bundle created" || echo "test failed : Model bundle has not been created"
