@@ -32,7 +32,7 @@ Model bundle
 
 - Compose a model bundle
 
-To on-board a model in Acumos you need to create a model bundle. You can use `compose()` with the functions to expose to create it. Below is an example
+To on-board a model on Acumos you need to create a model bundle. You can use `compose()` with the functions to expose to create it. Below is an example
 of how create a model bundle based on the IRIS model.
 
 .. code-block:: bash
@@ -46,7 +46,8 @@ This model bundle contains:
 
 #) *meta.json* defining the component and their metadata,
 #) *component.bin* the binary payload,
-#) and *component.proto* with the protobuf specs.
+#) *component.proto* with the protobuf specs.
+#) *component.swagger.yaml* with the Swagger API definition
 
 Please consult R documentation page for details, use the following commandin R
 
@@ -54,8 +55,6 @@ Please consult R documentation page for details, use the following commandin R
 
    help(package="acumos")
    ?acumos::compose()
-
-or see the `Compose <http://www.rforge.net/doc/packages/acumos/compose.html>`_ page at RForge.
 
 If you used R under windows you could meet an issue using the `acumos::compose()` function due to some
 problems between R under windows and zip. If RTools is not installed on your windows environment,
@@ -94,7 +93,7 @@ CLI and Web on-boarding
 
 - CLI on-boarding with `push()` function
 
-Once the model bundle is created, you can use the `push()` API client to on-board it in Acumos. This is CLI
+Once the model bundle is created, you can use the `push()` API client to on-board it on Acumos. This is CLI
 (Command Line Interface) on-boarding. An example R command is the following:
 
 .. code-block:: bash

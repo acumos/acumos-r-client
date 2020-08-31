@@ -20,15 +20,42 @@
 Acumos R Client Developer Guide
 ===============================
 
-The Acumos R Client library code is maintained by Simon Urbanek at
-`RForge <https://r-forge.r-project.org/>`_, and provides details for using the
-following Acumos-related R commands:
 
-* `compose (Compose a Acumos microservice) <https://rforge.net/doc/packages/acumos/compose.html>`_
-* `push (Push a component into the Acumos repository) <https://rforge.net/doc/packages/acumos/push.html>`_
-* `run (Run-time tools for Acumos) <https://rforge.net/doc/packages/acumos/run.html>`_
+Issues
+=======
 
-For more info, see:
+The issues are to be reported to: https://jira.acumos.org/projects/ACUMOS/issues
 
-* `Acumos R client info on rforge.net <http://rforge.net/acumos/>`_
-* `Acumos R Interface <https://github.com/s-u/acumos>`_ guide on github
+To create an issue, you need to log in with a Linux Foundation account: https://identity.linuxfoundation.org/
+
+Repository
+===========
+
+The official Git repoository of the Acumos R Client can be browsed using: https://gerrit.acumos.org/r/gitweb?p=acumos-r-client.git;a=tree
+
+There is a miror of this git repository in Github: https://github.com/acumos/acumos-r-client. 
+
+Contribution
+=============
+
+To contribute:
+
+#) you also need to log in with a Linux Foundation account: https://identity.linuxfoundation.org/
+
+#) and use Gerrit Code Review to clone and submit changes: https://gerrit.acumos.org/r/admin/repos/acumos-r-client
+
+For more info about Gerrit, please visit: https://gerrit.onap.org/r/Documentation
+
+To download the code and submit changes, please use:
+	
+.. code-block:: bash
+
+	git clone "https://gerrit.acumos.org/r/acumos-r-client"
+
+
+License
+========
+
+Copyright © 2017 AT&T, Tech Mahindra & Orange. All rights reserved.
+
+This project is licensed under the Apache License, Version 2.0 : http://www.apache.org/licenses/LICENSE-2.0

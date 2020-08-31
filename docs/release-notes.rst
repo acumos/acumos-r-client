@@ -22,7 +22,12 @@ Acumos R Client Release Notes
 
 These release notes cover the Acumos R client
 
-Version 0.3.0, 13 March 2020
+Version 0.4-0, 13 March 2020
+----------------------------
+* with `compose()`, generate a new file, `component.swagger.yaml`, that describes the component API using swagger 2.0.
+* serve a swagger UI at the path `/` and the swagger YAML description file at the path `/swagger.yaml`, using `RestRserve`.
+
+Version 0.3-0, 13 March 2020
 ----------------------------
 * add `composeFromSource()` and `pushFromSource()` functions, enabling respectively to compose and to push a bundle from an R file (considered as the component source) in which all the functions and auxiliary objects needed to compose the bundle are defined : `ACUMOS-3972 <https://jira.acumos.org/browse/ACUMOS-3972>`_
 * change `push()` to look up and include in the POST request a potential `component.R` file contained in the bundle :  `ACUMOS-3776 <https://jira.acumos.org/browse/ACUMOS-3776>`_
