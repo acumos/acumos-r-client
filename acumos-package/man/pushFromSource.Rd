@@ -29,15 +29,15 @@ pushFromSource(
 
 \item{create}{logical, isCreateMicroservice parameter, see Acumos onboarding documentation}
 
-\item{license}{optional string, name of a file to supply as the license. If not specified push()
+\item{license}{optional string, name of a file to supply as the license. If not specified push() 
 will also try to locate a license.json file in the component bundle if present.}
 
-\item{headers}{optional, named list or named character vector of HTTP headers that are to be added
-to the request. NOTE: the meaning of optional headers depends on the onboarding server so consult
+\item{headers}{optional, named list or named character vector of HTTP headers that are to be added 
+to the request. NOTE: the meaning of optional headers depends on the onboarding server so consult 
 the documentation of the onboarding server for supported additional headers and their meaning.}
 
-\item{...}{optional, named list or named character vector of HTTP headers that are to be added to
-the request. NOTE: the meaning of optional headers depends on the onboarding server so consult the
+\item{...}{optional, named list or named character vector of HTTP headers that are to be added to 
+the request. NOTE: the meaning of optional headers depends on the onboarding server so consult the 
 documentation of the onboarding server for supported additional headers and their meaning.}
 }
 \value{
@@ -47,14 +47,14 @@ invisibly, result of the request (may change in the future)
 push pushes a component into the Acumos repository using the component source file (R file).
 }
 \note{
-A regular component source file is an R script in which at least one of the three following
-functions are defined: \code{acumos_predict}, \code{acumos_transform} or \code{acumos_fit}.
-They respectively correspond to the functions \code{predict}, \code{transform} and \code{fit}
-of \code{\link{compose}}. In that script, if the functions \code{acumos_generate}, \code{acumos_service}
-or \code{acumos_initialize} are defined, they will also correspond to the other function
+A regular component source file is an R script in which at least one of the three following 
+functions are defined: \code{acumos_predict}, \code{acumos_transform} or \code{acumos_fit}. 
+They respectively correspond to the functions \code{predict}, \code{transform} and \code{fit} 
+of \code{\link{compose}}. In that script, if the functions \code{acumos_generate}, \code{acumos_service} 
+or \code{acumos_initialize} are defined, they will also correspond to the other function 
 type arguments of \code{\link{compose}}, namely \code{generate}, \code{service} and \code{initialize}.
 
-All the R objects defined in that script are included as auxiliary objects that are to be passed to
+All the R objects defined in that script are included as auxiliary objects that are to be passed to 
 the global workspace of the component. They will fill the \code{aux} argument of \code{\link{compose}}.
 }
 \seealso{
