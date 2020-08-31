@@ -33,23 +33,16 @@ Before you begin:
 Installing the Acumos R client
 ==============================
 
-Under **Debian/Ubuntu**, you may need *libcurl4-openssl-dev*, *libssl-dev*, *protobuf-compiler*, *libprotobuf-dev* and *libprotoc-dev*
+Under **Debian/Ubuntu**, you may need to install first some packages:
 
 .. code:: bash 
 
-    apt-get update
-    apt-get install -y libcurl4-openssl-dev libssl-dev protobuf-compiler libprotobuf-dev libprotoc-dev
+	apt-get update
+	apt-get install -y git-core libssl-dev libcurl4-openssl-dev make protobuf-compiler libprotoc-dev libprotobuf-dev
 
 Install the Acumos R client package in R:
 
 .. code:: bash
 
-    install.packages(c("httr", "jsonlite", "RProtoBuf", "Rserve")) # installing R dependencies first
-    install.packages("https://github.com/sambaala/R-acumos/archive/v0.3-0.tar.gz", repos=NULL)
-
-
-Under development version:
-
-.. code:: bash
-
-    remotes::install_github("att/R-acumos")
+	install.packages("remotes")
+	remotes::install_github("acumos/acumos-r-client", subdir="acumos-package")
