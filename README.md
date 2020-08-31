@@ -32,15 +32,17 @@ Please see the documentation in the "docs" folder.
 
 ## Install
 
-The easy way (recommended):
+Under Debian/Ubuntu, install `remotes` and `acumos` dependencies first:
 
-    install.packages("acumos", repos=c("http://cloud.r-project.org","http://rforge.net"), dep=T)
+    apt install -y git-core libssl-dev libcurl4-openssl-dev make protobuf-compiler libprotoc-dev libprotobuf-dev
 
-Alternatively, to install from sources: you have to install all dependent packages from CRAN first then
+Then, in R, install `remotes`:
 
-    git clone git@github.com:att/R-acumos.git acumos
-    R CMD build acumos
-    R CMD INSTALL acumos_*.tar.gz
+    install.packages("remotes")
+
+Install this development version of `acumos` using `remotes`:
+
+    remotes::install_github("acumos/acumos-r-client"; subdir="acumos-package")
 
 ## Usage
 
@@ -51,6 +53,17 @@ To create a deployment component, use `acumos::compose()` with the functions to 
 The component consists of a bundle `component.amc` which is a ZIP file with `meta.json` defining the component and its metadata, `component.bin` the binary payload and `component.proto` with the protobuf specs.
 
 Please consult R documentation page for details, i.e., use `?compose` in R
+
+Example:
+    
+    install.packages("randomForest")
+    library(randomForest)
+    library(acumos)
+    compose(predict=function(..., inputs=lapply(iris[-5], class)) as.character(predict(rf, as.data.frame(list(...)))),
+        aux = list(rf = randomForest(Species ~ ., data=iris)),
+        name="Random Forest",
+        file="component.amc"
+        )
 
 ### Deploy a component
 
@@ -67,3 +80,14 @@ The `run()` function can be configured to set the component directory and/or loc
     R -e 'acumos:::run(runtime=list(input_port=8100, output_url="http://127.0.0.1:8101/predict"))'
 
 See also `?run` in R
+
+### Onboard a component on Acumos platform
+
+Once the model bundle is created, you can use the `push()` API client to on-board it in Acumos. This is CLI
+(Command Line Interface) on-boarding. An example R command is the following:
+
+	acumos::push(url = "https://<hostname>/onboarding-app/v2/models",
+		file = "component.amc",
+        token = "<username>:<token>",
+        create = FALSE,
+        license = "path/to/your/license.json")

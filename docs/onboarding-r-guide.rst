@@ -32,7 +32,7 @@ Model bundle
 
 - Compose a model bundle
 
-To on-board a model in Acumos you need to create a model bundle. You can use `compose()` with the functions to expose to create it. Below is an example
+To on-board a model on Acumos you need to create a model bundle. You can use `compose()` with the functions to expose to create it. Below is an example
 of how create a model bundle based on the IRIS model.
 
 .. code-block:: bash
@@ -94,7 +94,7 @@ CLI and Web on-boarding
 
 - CLI on-boarding with `push()` function
 
-Once the model bundle is created, you can use the `push()` API client to on-board it in Acumos. This is CLI
+Once the model bundle is created, you can use the `push()` API client to on-board it on Acumos. This is CLI
 (Command Line Interface) on-boarding. An example R command is the following:
 
 .. code-block:: bash
