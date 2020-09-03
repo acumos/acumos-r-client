@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "171608d5_1f200dbd",
+        "filename": "INFO.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 223
+      },
+      "writtenOn": "2020-09-03T16:30:58Z",
+      "side": 1,
+      "message": "Hey team, the first line here should be\n- \u003c\u003c: *acumos_acumos-r-client_ptl\n\nWithout that in the committers list, Philippe will not have push access to the repo.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 27
+      },
+      "revId": "ffd563f93fe8e4dd80a172f005f5eb1eec014232",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": true
+    }
+  ]
+}
