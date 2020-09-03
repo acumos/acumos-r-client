@@ -22,6 +22,29 @@
       "revId": "ffd563f93fe8e4dd80a172f005f5eb1eec014232",
       "serverId": "655300a2-7a56-4504-9153-881edd907bea",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94379bee_d0ab5a1a",
+        "filename": "INFO.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 8
+      },
+      "writtenOn": "2020-09-03T16:39:46Z",
+      "side": 1,
+      "message": "Also, Aimee should be removed--she doesn\u0027t work on this any longer.",
+      "range": {
+        "startLine": 44,
+        "startChar": 12,
+        "endLine": 44,
+        "endChar": 13
+      },
+      "revId": "ffd563f93fe8e4dd80a172f005f5eb1eec014232",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": true
     }
   ]
 }
