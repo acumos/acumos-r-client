@@ -160,7 +160,7 @@ of your model.
 
 - Web on-boarding
 
-You can also drag & drop your model bundle on the "ON-BORADING BY WEB" page in your Acumos instance,
+You can also drag & drop your model bundle on the "ON-BOARDING BY WEB" page in your Acumos instance,
 or browse you model bundle from this page. This is Web on-boarding.
 
 You can on-board your model with a license profile, you just have to browse your license profile file or drag and drop it.
