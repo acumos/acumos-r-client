@@ -40,11 +40,7 @@ meetings:
 repositories:
     - 'acumos-r-client'
 committers:
-    - name: 'Aimee Ukasick'
-      email: 'aimeeu@research.att.com'
-      company: 'ATT'
-      id: 'aimeeu'
-      timezone: 'America/Chicago'
+    - <<: *acumos_acumos-r-client_ptl
     - name: 'Guy Jacobson'
       email: 'gj2418@att.com'
       company: 'ATT'
@@ -54,7 +50,7 @@ committers:
       email: 'Simon.Urbanek@R-project.org'
       company: 'R-project'
       id: 's-u'
-      timezone: 'America/New_York'
+      timezone: 'Pacific/Auckland'
     - name: 'Alassane Samba'
       email: 'alassane.samba@orange.com'
       company: 'Orange'
