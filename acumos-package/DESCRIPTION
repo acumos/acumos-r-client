@@ -1,13 +1,16 @@
 Package: acumos
-Title: Acumos R interface
+Title: 'Acumos' R Interface
 Version: 0.4-0
-Authors@R: c(person("Simon", "Urbanek", role = c("aut", "cre"), email = "urbanek@research.att.com"),
-             person("Alassane", "Samba", role = "ctb", email = "alassane.samba@orange.com"))
+Authors@R: c(person("Simon", "Urbanek", role = c("aut"), email = "urbanek@research.att.com"),
+             person("Alassane", "Samba", role = "cre", email = "alassane.samba@orange.com"))
 Maintainer: Alassane Samba <alassane.samba@orange.com>
-Description: Functions to create and run Acumos models.
+Description: Functions to create and run 'Acumos' models.
 License: Apache License (== 2.0)
 Imports: httr, jsonlite, RProtoBuf, Rserve, RestRserve, yaml
 Suggests: randomForest, callr
 BugReports: https://jira.acumos.org/projects/ACUMOS/issues
-URL: https://wiki.acumos.org/, https://gerrit.acumos.org
+URL: https://www.acumos.org/ (Acumos project website)
+	https://gerrit.acumos.org/r/gitweb?p=acumos-r-client.git (code repository)
+	https://github.com/acumos/acumos-r-client (mirror repository)
+	https://docs.acumos.org/en/latest/submodules/acumos-r-client/docs/ (docs)
 RoxygenNote: 7.0.2
