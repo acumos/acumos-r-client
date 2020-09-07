@@ -50,7 +50,7 @@ composeFromSource(
   file=example_source,
   outputfile = "acumos_bundle_example_0.zip"
 )
-
+file.remove("acumos_bundle_example_0.zip")
 }
 \seealso{
 \code{\link{compose}}

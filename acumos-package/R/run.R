@@ -208,7 +208,7 @@ send.msg <- function(url, payload, response=FALSE) {
   .dinfo(3L, "INFO: POST to ", url)
   .dinfo(4L, "INFO: payload: ", exp=print(payload))
   r <- tryCatch(httr::POST(url, body=payload),
-                error=function(e) stop("ERROR: failed to send data to ",url," (from component ", meta$name,"): ", as.character(e)))
+                error=function(e) stop("ERROR: failed to send data to ",url," (from component ", .GlobalEnv$meta$name,"): ", as.character(e)))
   if (isTRUE(response)) return(r)
   if (identical(r$status_code, 200L)) TRUE else {
     warning("POST to ", url, " was not successful: ", rawToChar(r$content))
@@ -240,27 +240,27 @@ req_handler <- function(request,response){ #path, query, body, headers) {
   fn <- NULL
   fn.meta <- NULL
   .dinfo(2L, "INFO: handing HTTP ", request$path, ", method ", request$method)
-  .dinfo(4L, "INFO: state: meta: ", exp=str(meta))
-  .dinfo(4L, "INFO: state: comp: ", exp=str(comp))
+  .dinfo(4L, "INFO: state: meta: ", exp=str(.GlobalEnv$meta))
+  .dinfo(4L, "INFO: state: comp: ", exp=str(.GlobalEnv$comp))
   fn.type <- "<unknown>"
   if (isTRUE(grepl("^/predict", request$path))) {
-    fn <- comp$predict
-    fn.meta <- meta$methods$predict
+    fn <- .GlobalEnv$comp$predict
+    fn.meta <- .GlobalEnv$meta$methods$predict
     fn.type <- "predict"
   }
   if (isTRUE(grepl("^/transform", request$path))) {
-    fn <- comp$transform
-    fn.meta <- meta$methods$transform
+    fn <- .GlobalEnv$comp$transform
+    fn.meta <- .GlobalEnv$meta$methods$transform
     fn.type <- "transform"
   }
   if (isTRUE(grepl("^/fit", request$path))) {
-    fn <- comp$fit
-    fn.meta <- meta$methods$fit
+    fn <- .GlobalEnv$comp$fit
+    fn.meta <- .GlobalEnv$meta$methods$fit
     fn.type <- "fit"
   }
   .dinfo(3L, "INFO: handler type: ", fn.type, ", formats: ", exp=str(fn.meta))
   if (is.null(fn)) {
-    if (is.function(comp$http.service)) return(comp$http.service(request$path, request$method, request$body, request$headers))
+    if (is.function(.GlobalEnv$comp$http.service)) return(.GlobalEnv$comp$http.service(request$path, request$method, request$body, request$headers))
     return("ERROR: unsupported API call (fn is null)")
   }
   if (!is.function(fn)) return(paste0("ERROR: this component doesn't support ", fn.type, "()"))
@@ -270,9 +270,9 @@ req_handler <- function(request,response){ #path, query, body, headers) {
       res <- do.call(fn, msg2data(request$body, fn.meta$input))
       if (!is.null(res) && !is.null(fn.meta$output) && length(unlist(res))>0) {
         msg <- data2msg(res, fn.meta$output)
-        for (url in runtime$output_url)
+        for (url in .GlobalEnv$runtime$output_url)
           send.msg(url, msg)
-        if (isTRUE(runtime$data_response)){
+        if (isTRUE(.GlobalEnv$runtime$data_response)){
           if(request$accept %in% "application/vnd.google.protobuf"){
             response$set_body(msg)
             response$set_content_type("application/vnd.google.protobuf")

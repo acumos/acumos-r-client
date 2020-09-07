@@ -85,6 +85,6 @@ compose(predict=function(..., inputs=lapply(iris[-5], class)){
                 },
         aux = list(rf = randomForest(Species ~ ., data=iris)),
         name="Random Forest")
-
+file.remove("component.amc")
 }
 \keyword{interface}

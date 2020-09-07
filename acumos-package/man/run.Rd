@@ -121,5 +121,7 @@ send.msg(url, payload, response=FALSE)
     p$interrupt()
     p$kill()
   }
+  file.remove("component.amc")
+  file.remove("generator.amc")
 }
 \keyword{interface}
