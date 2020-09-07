@@ -8,7 +8,7 @@
 }
 \usage{
 compose(predict, transform, fit, generate, service, initialize,
-        aux = list(), name = "R Component", componentVersion="unknown version", 
+        aux = list(), name = "R Component", componentVersion="unknown version",
         file = "component.amc")
 }
 \arguments{
@@ -75,7 +75,7 @@ Simon Urbanek
 compose(transform=identity, name="identity")
 
 ## simple addition
-compose(transform=function(a, b, inputs=c(a="numeric", b="numeric"), 
+compose(transform=function(a, b, inputs=c(a="numeric", b="numeric"),
         outputs=c(x="numeric")) a + b, name="Addition")
 
 ## silly RF trained on Iris
@@ -85,6 +85,6 @@ compose(predict=function(..., inputs=lapply(iris[-5], class)){
                 },
         aux = list(rf = randomForest(Species ~ ., data=iris)),
         name="Random Forest")
-
+file.remove("component.amc")
 }
 \keyword{interface}
