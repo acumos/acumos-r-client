@@ -24,8 +24,8 @@ These release notes cover the Acumos R client
 
 Version 0.4-0, 03 September 2020
 --------------------------------
-* with `compose()`, generate a new file, `component.swagger.yaml`, that describes the component API using swagger 2.0.
-* serve a swagger UI at the path `/` and the swagger YAML description file at the path `/swagger.yaml`, using `RestRserve`.
+* with `compose()`, generate a new file, `component.swagger.yaml`, that describes the component API using swagger 2.0. `ACUMOS-4212 <https://jira.acumos.org/browse/ACUMOS-4212>`_
+* serve a swagger UI at the path `/` and the swagger YAML description file at the path `/swagger.yaml`, using `RestRserve`. `ACUMOS-4212 <https://jira.acumos.org/browse/ACUMOS-4212>`_
 
 Version 0.3-0, 13 March 2020
 ----------------------------
