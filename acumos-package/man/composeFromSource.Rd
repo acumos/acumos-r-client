@@ -9,7 +9,7 @@ composeFromSource(
   name = "R Component",
   componentVersion = "unknown version",
   outputfile = "component.zip",
-  addSource = T
+  addSource = TRUE
 )
 }
 \arguments{
@@ -27,18 +27,18 @@ composeFromSource(
 Structure describing the component (parsed content of the JSON description).
 }
 \description{
-\code{composeFromSource} generates everything necessary to create a Acumos microservice directly
+\code{composeFromSource} generates everything necessary to create a Acumos microservice directly 
 from a specifically written R file, representing the component source.
 }
 \note{
-A regular component source file is an R script in which at least one of the three following
-functions are defined: \code{acumos_predict}, \code{acumos_transform} or \code{acumos_fit}.
-They respectively correspond to the functions \code{predict}, \code{transform} and \code{fit}
-of \code{\link{compose}}. In that script, if the functions \code{acumos_generate}, \code{acumos_service}
-or \code{acumos_initialize} are defined, they will also correspond to the other function
+A regular component source file is an R script in which at least one of the three following 
+functions are defined: \code{acumos_predict}, \code{acumos_transform} or \code{acumos_fit}. 
+They respectively correspond to the functions \code{predict}, \code{transform} and \code{fit} 
+of \code{\link{compose}}. In that script, if the functions \code{acumos_generate}, \code{acumos_service} 
+or \code{acumos_initialize} are defined, they will also correspond to the other function 
 type arguments of \code{\link{compose}}, namely \code{generate}, \code{service} and \code{initialize}.
 
-All the R objects defined in that script are included as auxiliary objects that are to be passed to
+All the R objects defined in that script are included as auxiliary objects that are to be passed to 
 the global workspace of the component. They will fill the \code{aux} argument of \code{\link{compose}}.
 }
 \examples{
@@ -50,7 +50,7 @@ composeFromSource(
   file=example_source,
   outputfile = "acumos_bundle_example_0.zip"
 )
-file.remove("acumos_bundle_example_0.zip")
+
 }
 \seealso{
 \code{\link{compose}}
