@@ -157,30 +157,29 @@ run <- function(where=getwd(), file="component.amc", runtime="runtime.json", ini
   if (!all(ok)) stop(paste0("invalid archive (missing ",
                             paste(basename(c.files[!ok]), collapse=", "),
                             ")"))
-  .GlobalEnv$meta <- jsonlite::fromJSON(readLines(metadata), F)
-  .dinfo(2L, "INFO: loaded metadata:", exp=print(.GlobalEnv$meta))
-  .GlobalEnv$comp <- readRDS(payload)
-  .dinfo(2L, "INFO: components:", exp=str(.GlobalEnv$comp))
-  aux <- .GlobalEnv$comp$aux
+  meta <- jsonlite::fromJSON(readLines(metadata), FALSE)
+  .dinfo(2L, "INFO: loaded metadata:", exp=print(meta))
+  comp <- readRDS(payload)
+  .dinfo(2L, "INFO: components:", exp=str(comp))
+  aux <- comp$aux
   .dinfo(2L," INFO: populating global env with aux vars: ", exp=print(names(aux)))
   for (i in names(aux)) .GlobalEnv[[i]] <- aux[[i]]
-  aux <- .GlobalEnv$comp$aux <- NULL
-  rt <- .GlobalEnv$runtime <- if (is.list(runtime)) runtime else jsonlite::fromJSON(readLines(runtime), FALSE)
+  aux <- comp$aux <- NULL
+  rt <- runtime <- if (is.list(runtime)) runtime else jsonlite::fromJSON(readLines(runtime), FALSE)
   .dinfo(2L, "INFO: loading runtime: ", exp=print(rt))
-  .GlobalEnv$state <- new.env(parent=.GlobalEnv)
   RProtoBuf::readProtoFiles(proto)
-  if (length(.GlobalEnv$comp$packages)) {
-    .dinfo(2L, "INFO: loading packages: ", exp=print(.GlobalEnv$comp$packages))
-    for (pkg in .GlobalEnv$comp$packages) library(pkg, character.only=TRUE)
+  if (length(comp$packages)) {
+    .dinfo(2L, "INFO: loading packages: ", exp=print(comp$packages))
+    for (pkg in comp$packages) library(pkg, character.only=TRUE)
   }
-  if (is.function(.GlobalEnv$comp$initialize)) {
+  if (is.function(comp$initialize)) {
     .dinfo(1L, "INFO: calling initialize()")
-    .GlobalEnv$comp$initialize()
+    comp$initialize()
   }
   if (init.only) return(TRUE)
-  if (is.function(.GlobalEnv$comp$generate)) {
+  if (is.function(comp$generate)) {
     .dinfo(1L, "INFO: calling generate()")
-    .GlobalEnv$comp$generate()
+    comp$generate()
   } else {
     if (is.null(rt$input_port)) stop("input port is missing in the runtime")
     .dinfo(1L, "INFO: starting HTTP server on port ", rt$input_port)
@@ -189,9 +188,12 @@ run <- function(where=getwd(), file="component.amc", runtime="runtime.json", ini
     encode_decode_middleware$ContentHandlers$set_decode("application/vnd.google.protobuf", identity)
     encode_decode_middleware$ContentHandlers$set_encode("application/vnd.google.protobuf", identity)
     app$append_middleware(encode_decode_middleware)
-    if (is.function(.GlobalEnv$comp$predict)) app$add_post(path = "/predict", FUN = req_handler)
-    if (is.function(.GlobalEnv$comp$transform)) app$add_post(path = "/transform", FUN = req_handler)
-    if (is.function(.GlobalEnv$comp$fit)) app$add_post(path = "/fit", FUN = req_handler)
+    req_handler_overloaded <- function(request, response){
+      req_handler(request=request, response=response, comp=comp, meta=meta, runtime=runtime)
+    }
+    if (is.function(comp$predict)) app$add_post(path = "/predict", FUN = req_handler_overloaded)
+    if (is.function(comp$transform)) app$add_post(path = "/transform", FUN = req_handler_overloaded)
+    if (is.function(comp$fit)) app$add_post(path = "/fit", FUN = req_handler_overloaded)
     if(file.exists(swagger)){
       app$add_openapi(path = "/swagger.yaml", file_path = swagger)
       app$add_swagger_ui(path = "/", path_openapi = "/swagger.yaml", use_cdn = TRUE)
@@ -208,7 +210,7 @@ send.msg <- function(url, payload, response=FALSE) {
   .dinfo(3L, "INFO: POST to ", url)
   .dinfo(4L, "INFO: payload: ", exp=print(payload))
   r <- tryCatch(httr::POST(url, body=payload),
-                error=function(e) stop("ERROR: failed to send data to ",url," (from component ", .GlobalEnv$meta$name,"): ", as.character(e)))
+                error=function(e) stop("ERROR: failed to send data to ",url,": ", as.character(e)))
   if (isTRUE(response)) return(r)
   if (identical(r$status_code, 200L)) TRUE else {
     warning("POST to ", url, " was not successful: ", rawToChar(r$content))
@@ -236,31 +238,31 @@ msg2data <- function(msg, input) {
   data
 }
 
-req_handler <- function(request,response){ #path, query, body, headers) {
+req_handler <- function(request, response, comp, meta, runtime ){ 
   fn <- NULL
   fn.meta <- NULL
   .dinfo(2L, "INFO: handing HTTP ", request$path, ", method ", request$method)
-  .dinfo(4L, "INFO: state: meta: ", exp=str(.GlobalEnv$meta))
-  .dinfo(4L, "INFO: state: comp: ", exp=str(.GlobalEnv$comp))
+  .dinfo(4L, "INFO: state: meta: ", exp=str(meta))
+  .dinfo(4L, "INFO: state: comp: ", exp=str(comp))
   fn.type <- "<unknown>"
   if (isTRUE(grepl("^/predict", request$path))) {
-    fn <- .GlobalEnv$comp$predict
-    fn.meta <- .GlobalEnv$meta$methods$predict
+    fn <- comp$predict
+    fn.meta <- meta$methods$predict
     fn.type <- "predict"
   }
   if (isTRUE(grepl("^/transform", request$path))) {
-    fn <- .GlobalEnv$comp$transform
-    fn.meta <- .GlobalEnv$meta$methods$transform
+    fn <- comp$transform
+    fn.meta <- meta$methods$transform
     fn.type <- "transform"
   }
   if (isTRUE(grepl("^/fit", request$path))) {
-    fn <- .GlobalEnv$comp$fit
-    fn.meta <- .GlobalEnv$meta$methods$fit
+    fn <- comp$fit
+    fn.meta <- meta$methods$fit
     fn.type <- "fit"
   }
   .dinfo(3L, "INFO: handler type: ", fn.type, ", formats: ", exp=str(fn.meta))
   if (is.null(fn)) {
-    if (is.function(.GlobalEnv$comp$http.service)) return(.GlobalEnv$comp$http.service(request$path, request$method, request$body, request$headers))
+    if (is.function(comp$http.service)) return(comp$http.service(request$path, request$method, request$body, request$headers))
     return("ERROR: unsupported API call (fn is null)")
   }
   if (!is.function(fn)) return(paste0("ERROR: this component doesn't support ", fn.type, "()"))
@@ -270,9 +272,9 @@ req_handler <- function(request,response){ #path, query, body, headers) {
       res <- do.call(fn, msg2data(request$body, fn.meta$input))
       if (!is.null(res) && !is.null(fn.meta$output) && length(unlist(res))>0) {
         msg <- data2msg(res, fn.meta$output)
-        for (url in .GlobalEnv$runtime$output_url)
+        for (url in runtime$output_url)
           send.msg(url, msg)
-        if (isTRUE(.GlobalEnv$runtime$data_response)){
+        if (isTRUE(runtime$data_response)){
           if(request$accept %in% "application/vnd.google.protobuf"){
             response$set_body(msg)
             response$set_content_type("application/vnd.google.protobuf")

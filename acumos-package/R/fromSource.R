@@ -46,12 +46,13 @@
 #'   file=example_source,
 #'   outputfile = "acumos_bundle_example_0.zip"
 #' )
+#' file.remove("acumos_bundle_example_0.zip")
 #' 
 #' @author Alassane Samba
 #' 
 #' @export 
 composeFromSource<-function(file="acumos.R", 
-                          name = "R Component", componentVersion="unknown version", outputfile = "component.zip", addSource=T){
+                          name = "R Component", componentVersion="unknown version", outputfile = "component.zip", addSource=TRUE){
   comp<-new.env()
   exprs <- parse(file)
   tryCatch(
@@ -116,7 +117,7 @@ composeFromSource<-function(file="acumos.R",
 #'
 #' @export
 #'
-pushFromSource<-function(url, file, name = "R Component", addSource=T, token, create=TRUE, license,
+pushFromSource<-function(url, file, name = "R Component", addSource=TRUE, token, create=TRUE, license,
                          headers, ...){
   # create temporary directory
   dir <- tempfile("acumos-tmp")
@@ -135,7 +136,7 @@ runFromSource<-function(file="acumos.R",where=getwd(),
   dir.create(dir)
   on.exit(unlink(dir, TRUE))
   # compose
-  composeFromSource(file=file, outputfile = file.path(dir,"acumos-app.zip"), addSource=F)
+  composeFromSource(file=file, outputfile = file.path(dir,"acumos-app.zip"), addSource=FALSE)
   # run
   run(file=file.path(dir,"acumos-app.zip"),
                runtime=runtime, init.only=init.only, where=where)
