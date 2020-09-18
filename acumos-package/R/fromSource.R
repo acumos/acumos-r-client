@@ -13,10 +13,10 @@
 ## limitations under the License.
 #
 #' Compose a Acumos microservice from its source file
-#' 
-#' \code{composeFromSource} generates everything necessary to create a Acumos microservice directly 
+#'
+#' \code{composeFromSource} generates everything necessary to create a Acumos microservice directly
 #' from a specifically written R file, representing the component source.
-#' 
+#'
 #' @param file string, name of component source file (an R script)
 #' @param name 	string, name of the component
 #' @param componentVersion 	string, version of the component
@@ -26,18 +26,18 @@
 #' @return Structure describing the component (parsed content of the JSON description).
 #'
 #' @note
-#' A regular component source file is an R script in which at least one of the three following 
-#' functions are defined: \code{acumos_predict}, \code{acumos_transform} or \code{acumos_fit}. 
-#' They respectively correspond to the functions \code{predict}, \code{transform} and \code{fit} 
-#' of \code{\link{compose}}. In that script, if the functions \code{acumos_generate}, \code{acumos_service} 
-#' or \code{acumos_initialize} are defined, they will also correspond to the other function 
+#' A regular component source file is an R script in which at least one of the three following
+#' functions are defined: \code{acumos_predict}, \code{acumos_transform} or \code{acumos_fit}.
+#' They respectively correspond to the functions \code{predict}, \code{transform} and \code{fit}
+#' of \code{\link{compose}}. In that script, if the functions \code{acumos_generate}, \code{acumos_service}
+#' or \code{acumos_initialize} are defined, they will also correspond to the other function
 #' type arguments of \code{\link{compose}}, namely \code{generate}, \code{service} and \code{initialize}.
-#' 
-#' All the R objects defined in that script are included as auxiliary objects that are to be passed to 
+#'
+#' All the R objects defined in that script are included as auxiliary objects that are to be passed to
 #' the global workspace of the component. They will fill the \code{aux} argument of \code{\link{compose}}.
 #' @seealso \code{\link{compose}}
-#' 
-#' @examples 
+#'
+#' @examples
 #' # see an example source file in:
 #' print(system.file("examples","example_0/", package = "acumos"))
 #' # compose from acumos.R
@@ -46,12 +46,13 @@
 #'   file=example_source,
 #'   outputfile = "acumos_bundle_example_0.zip"
 #' )
-#' 
+#' file.remove("acumos_bundle_example_0.zip")
+#'
 #' @author Alassane Samba
-#' 
-#' @export 
-composeFromSource<-function(file="acumos.R", 
-                          name = "R Component", componentVersion="unknown version", outputfile = "component.zip", addSource=T){
+#'
+#' @export
+composeFromSource<-function(file="acumos.R",
+                          name = "R Component", componentVersion="unknown version", outputfile = "component.zip", addSource=TRUE){
   comp<-new.env()
   exprs <- parse(file)
   tryCatch(
@@ -59,20 +60,20 @@ composeFromSource<-function(file="acumos.R",
       eval(exprs, envir= comp)
     },
     error=function(cond) {
-      message(paste0("Please verify the script '", file, "' works. 
+      message(paste0("Please verify the script '", file, "' works.
                      Please refer to the package documentation: help(package='acumos')"))
       message("Error message while executing the file:")
       stop(cond)
     }
-  ) 
+  )
   verbs<-ls(envir = comp)[ls(envir = comp)%in%
                             paste(c("acumos"),
-                                  c("predict","transform","fit","generate","service","initialize"), 
+                                  c("predict","transform","fit","generate","service","initialize"),
                                   sep = "_")]
   aux_names<-ls(envir = comp)[!ls(envir = comp)%in%verbs]
   funcs<-mget(verbs, envir = comp)
   names(funcs)<-gsub(x=names(funcs),pattern = "acumos_", replacement = "")
-  do.call(acumos::compose, c(funcs, aux = list(mget(aux_names, envir = comp)), 
+  do.call(acumos::compose, c(funcs, aux = list(mget(aux_names, envir = comp)),
                              name = name, file = outputfile))
   dir <- tempfile("acumos-tmp")
   dir.create(dir)
@@ -83,40 +84,40 @@ composeFromSource<-function(file="acumos.R",
 #' Push a component into the Acumos repository from its source file
 #'
 #' push pushes a component into the Acumos repository using the component source file (R file).
-#' 
+#'
 #' @param url URL for the POST request
 #' @param file string, name of component source file (an R script)
 #' @param name string, name of the component
 #' @param addSource boolean, to add source file to the (ZIP) bundle or not
 #' @param token token obtained from auth (optional)
 #' @param create logical, isCreateMicroservice parameter, see Acumos onboarding documentation
-#' @param license optional string, name of a file to supply as the license. If not specified push() 
+#' @param license optional string, name of a file to supply as the license. If not specified push()
 #' will also try to locate a license.json file in the component bundle if present.
-#' @param headers optional, named list or named character vector of HTTP headers that are to be added 
-#' to the request. NOTE: the meaning of optional headers depends on the onboarding server so consult 
+#' @param headers optional, named list or named character vector of HTTP headers that are to be added
+#' to the request. NOTE: the meaning of optional headers depends on the onboarding server so consult
 #' the documentation of the onboarding server for supported additional headers and their meaning.
 #' @param ... optional, named list or named character vector of HTTP headers that are to be added to 
-#' the request. NOTE: the meaning of optional headers depends on the onboarding server so consult the 
+#' the request. NOTE: the meaning of optional headers depends on the onboarding server so consult the
 #' documentation of the onboarding server for supported additional headers and their meaning.
 #'
 #' @return invisibly, result of the request (may change in the future)
 #'
-#' @note 
-#' A regular component source file is an R script in which at least one of the three following 
-#' functions are defined: \code{acumos_predict}, \code{acumos_transform} or \code{acumos_fit}. 
-#' They respectively correspond to the functions \code{predict}, \code{transform} and \code{fit} 
-#' of \code{\link{compose}}. In that script, if the functions \code{acumos_generate}, \code{acumos_service} 
-#' or \code{acumos_initialize} are defined, they will also correspond to the other function 
+#' @note
+#' A regular component source file is an R script in which at least one of the three following
+#' functions are defined: \code{acumos_predict}, \code{acumos_transform} or \code{acumos_fit}.
+#' They respectively correspond to the functions \code{predict}, \code{transform} and \code{fit}
+#' of \code{\link{compose}}. In that script, if the functions \code{acumos_generate}, \code{acumos_service}
+#' or \code{acumos_initialize} are defined, they will also correspond to the other function
 #' type arguments of \code{\link{compose}}, namely \code{generate}, \code{service} and \code{initialize}.
-#' 
-#' All the R objects defined in that script are included as auxiliary objects that are to be passed to 
+#'
+#' All the R objects defined in that script are included as auxiliary objects that are to be passed to
 #' the global workspace of the component. They will fill the \code{aux} argument of \code{\link{compose}}.
-#' 
+#'
 #' @seealso \code{\link{push}}
 #'
 #' @export
 #'
-pushFromSource<-function(url, file, name = "R Component", addSource=T, token, create=TRUE, license,
+pushFromSource<-function(url, file, name = "R Component", addSource=TRUE, token, create=TRUE, license,
                          headers, ...){
   # create temporary directory
   dir <- tempfile("acumos-tmp")
@@ -125,7 +126,7 @@ pushFromSource<-function(url, file, name = "R Component", addSource=T, token, cr
   # compose
   composeFromSource(file=file, outputfile = file.path(dir,"acumos-app.zip"), name=name, addSource=addSource)
   # run
-  push(url=url, file = file.path(dir,"acumos-app.zip"), 
+  push(url=url, file = file.path(dir,"acumos-app.zip"),
        token=token, create=create, license=license, headers=headers, ...)
 }
 runFromSource<-function(file="acumos.R",where=getwd(),
@@ -135,7 +136,7 @@ runFromSource<-function(file="acumos.R",where=getwd(),
   dir.create(dir)
   on.exit(unlink(dir, TRUE))
   # compose
-  composeFromSource(file=file, outputfile = file.path(dir,"acumos-app.zip"), addSource=F)
+  composeFromSource(file=file, outputfile = file.path(dir,"acumos-app.zip"), addSource=FALSE)
   # run
   run(file=file.path(dir,"acumos-app.zip"),
                runtime=runtime, init.only=init.only, where=where)
