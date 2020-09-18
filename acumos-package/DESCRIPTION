@@ -1,13 +1,19 @@
 Package: acumos
 Title: 'Acumos' R Interface
 Version: 0.4-0
-Authors@R: c(person("Simon", "Urbanek", role = c("aut"), email = "urbanek@research.att.com"),
-             person("Alassane", "Samba", role = "cre", email = "alassane.samba@orange.com"))
-Maintainer: Alassane Samba <alassane.samba@orange.com>
-Description: Functions to create and run 'Acumos' models.
+Authors@R: c(person("Simon", "Urbanek", role = c("aut"), email = "simon.urbanek@R-project.org"),
+             person("Alassane", "Samba", role = c("aut","cre"), email = "alassane.samba@orange.com"),
+             person("AT&T", role = c("cph")),
+             person("Tech Mahindra", role = c("cph")),
+             person("Orange", role = c("cph")))
+Description: Create, upload and run 'Acumos' R models.
+  'Acumos' is a platform and open source framework intended to make it easy to build, 
+  share, and deploy AI apps. 'Acumos' is part of the 'LF AI Foundation', an umbrella 
+  organization within The Linux Foundation. With this package, user can create a 
+  component, and push it to an 'Acumos' platform.
 License: Apache License (== 2.0)
 Imports: httr, jsonlite, RProtoBuf, Rserve, RestRserve, yaml
-Suggests: randomForest, callr
+Suggests: randomForest
 BugReports: https://jira.acumos.org/projects/ACUMOS/issues
 URL: https://www.acumos.org/ (Acumos project website)
 	https://gerrit.acumos.org/r/gitweb?p=acumos-r-client.git (code repository)
