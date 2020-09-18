@@ -8,7 +8,7 @@ pushFromSource(
   url,
   file,
   name = "R Component",
-  addSource = T,
+  addSource = TRUE,
   token,
   create = TRUE,
   license,
