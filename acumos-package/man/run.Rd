@@ -90,38 +90,4 @@ send.msg(url, payload, response=FALSE)
 \seealso{
 \code{\link{compose}}
 }
-\examples{
-  library(acumos)
-  ## compose a generator component that feeds data into the pipeline
-  ## row by row. Note that the protocol supports data frame chunks, so
-  ## it is possible to feed mupltiple rows at once
-  compose(generate=function(..., outputs=lapply(iris[-5], class))
-               for (i in seq.int(nrow(iris)))
-                   acumos:::send.msg(runtime$output_url,
-                       acumos:::data2msg(iris[i,-5], meta$methods$generate$output)),
-          file="generator.amc")
-
-  ## compose a simple RF component and run it
-  library(randomForest)
-  compose(predict=function(..., inputs=lapply(iris[-5], class)){
-                      print(as.character(predict(rf, as.data.frame(list(...)))))
-                  },
-          aux = list(rf = randomForest(Species ~ ., data=iris)),
-          name="Random Forest")
-  \dontrun{
-    p <- callr::r_bg(function(){acumos:::run(runtime=list(input_port=8101))})
-
-    Sys.sleep(.5) ## wait a bit for the server to start
-
-    ## run the generator component to feed the above
-    acumos:::run(file="generator.amc", runtime=list(output_url="http://127.0.0.1:8101/predict"))
-
-    ## shut down the RF component
-    head(p$read_output_lines())
-    p$interrupt()
-    p$kill()
-  }
-  file.remove("component.amc")
-  file.remove("generator.amc")
-}
 \keyword{interface}
