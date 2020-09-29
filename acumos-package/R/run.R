@@ -13,27 +13,27 @@
 
 ## collect dependencies - i.e. loaded packages and their versions
 pkg.deps <- function() {
+  ip <- installed.packages()
   p <- loadedNamespaces()
-  base <- c("compiler", "graphics", "tools", "utils", "grDevices", "stats",
-            "datasets", "methods", "base", "grid", "parallel", "splines", "R",
-            "stats4", "tcltk", "R") ## check for Priority: base
+  base <-  c("R",rownames(ip[
+    ip[,"Priority"]%in%c("base")|
+      ip[,"License"]%in%paste0("Part of R ",R.version$major,".",R.version$minor),
+    ]))
   p <- unique(p[! p %in% base])
   np <- p
   p <- character()
-  ip <- installed.packages()
   ## iterate recursively until no new deps are detected
-  while (length(np) != length(p)) {
+  while (length(np) != length(p) | !identical(order(np),order(p))) {
     p <- np
     m <- na.omit(match(p, rownames(ip)))
     xp <- unique(gsub(" .*","",unlist(strsplit(c(ip[m,"Depends"], ip[m,"LinkingTo"], ip[m, "Imports"]), ", *"))))
+    xp <- unique(gsub("\\s+","",gsub("[ \t(]+.*", "", xp))) ## remove versions and whitespaces
     np <- na.omit(unique(c(xp, p)))
     np <- np[! np %in% base]
   }
-  p <- unique(gsub("\\s+","",gsub("[ \t(]+.*", "", p))) ## remove versions and whitespaces
-  l <- lapply(p, function(o) { d=packageDescription(o); d=d[c("Package", "Version")]; names(d)=c("name","version"); d })
+  l <- lapply(np, function(o) { d=packageDescription(o); d=d[c("Package", "Version")]; names(d)=c("name","version"); d })
   list(l)
 }
-
 ## fetch type info from a function
 fetch.types <- function(f, default.in=c(x="character"), default.out=c(x="character")) {
   args <- formals(f)
