@@ -36,7 +36,7 @@ will also try to locate a license.json file in the component bundle if present.}
 to the request. NOTE: the meaning of optional headers depends on the onboarding server so consult
 the documentation of the onboarding server for supported additional headers and their meaning.}
 
-\item{...}{optional, named list or named character vector of HTTP headers that are to be added to
+\item{...}{optional, named list or named character vector of HTTP headers that are to be added to 
 the request. NOTE: the meaning of optional headers depends on the onboarding server so consult the
 documentation of the onboarding server for supported additional headers and their meaning.}
 }

@@ -1,6 +1,6 @@
 Package: acumos
 Title: 'Acumos' R Interface
-Version: 0.4-0
+Version: 0.4-1
 Authors@R: c(person("Simon", "Urbanek", role = c("aut"), email = "simon.urbanek@R-project.org"),
              person("Alassane", "Samba", role = c("aut","cre"), email = "alassane.samba@orange.com"),
              person("AT&T", role = c("cph")),

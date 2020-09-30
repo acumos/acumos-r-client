@@ -162,9 +162,8 @@ run <- function(where=getwd(), file="component.amc", runtime="runtime.json", ini
   comp <- readRDS(payload)
   .dinfo(2L, "INFO: components:", exp=str(comp))
   aux <- comp$aux
-  .dinfo(2L," INFO: populating global env with aux vars: ", exp=print(names(aux)))
-  for (i in names(aux)) .GlobalEnv[[i]] <- aux[[i]]
-  aux <- comp$aux <- NULL
+  comp$aux <- NULL
+  .dinfo(2L," INFO: managed aux vars: ", exp=print(names(aux)))
   rt <- runtime <- if (is.list(runtime)) runtime else jsonlite::fromJSON(readLines(runtime), FALSE)
   .dinfo(2L, "INFO: loading runtime: ", exp=print(rt))
   RProtoBuf::readProtoFiles(proto)
@@ -189,7 +188,7 @@ run <- function(where=getwd(), file="component.amc", runtime="runtime.json", ini
     encode_decode_middleware$ContentHandlers$set_encode("application/vnd.google.protobuf", identity)
     app$append_middleware(encode_decode_middleware)
     req_handler_overloaded <- function(request, response){
-      req_handler(request=request, response=response, comp=comp, meta=meta, runtime=runtime)
+      req_handler(request=request, response=response, comp=comp, meta=meta, runtime=runtime, aux=aux)
     }
     if (is.function(comp$predict)) app$add_post(path = "/predict", FUN = req_handler_overloaded)
     if (is.function(comp$transform)) app$add_post(path = "/transform", FUN = req_handler_overloaded)
@@ -238,7 +237,15 @@ msg2data <- function(msg, input) {
   data
 }
 
-req_handler <- function(request, response, comp, meta, runtime ){ 
+with_env <- function(f, e=parent.frame()) {
+  stopifnot(is.function(f))
+  environment(f) <- e
+  f
+}
+
+req_handler <- function(request, response, comp, meta, runtime, aux){ 
+  fn.env <- new.env()
+  for (i in names(aux)) assign(i, aux[[i]], envir = fn.env)
   fn <- NULL
   fn.meta <- NULL
   .dinfo(2L, "INFO: handing HTTP ", request$path, ", method ", request$method)
@@ -269,7 +276,7 @@ req_handler <- function(request, response, comp, meta, runtime ){
   if (is.null(fn.meta$input)) return(paste0("ERROR: ", fn.type, "() schema is missing input type specification"))
   tryCatch({
     if(request$content_type %in% "application/vnd.google.protobuf"){
-      res <- do.call(fn, msg2data(request$body, fn.meta$input))
+      res <- do.call(with_env(fn,fn.env), msg2data(request$body, fn.meta$input))
       if (!is.null(res) && !is.null(fn.meta$output) && length(unlist(res))>0) {
         msg <- data2msg(res, fn.meta$output)
         for (url in runtime$output_url)
@@ -296,7 +303,7 @@ req_handler <- function(request, response, comp, meta, runtime ){
       }else{ # list (from json)
         dat<-request$body
       }
-      res <- do.call(fn, dat)
+      res <- do.call(with_env(fn,fn.env), dat)
       if(!is.null(res) && length(unlist(res))>0){
         if(request$accept %in% "application/vnd.google.protobuf"){
           msg<-data2msg(res, fn.meta$output)
