@@ -22,10 +22,17 @@ Acumos R Client Release Notes
 
 These release notes cover the Acumos R client
 
+Version 0.4-1, 02 October 2020
+------------------------------
+* debug `pkg.deps()`: (i) a less R version dependant base packages listing, (ii) continue the while loop until the good order of package dependencies is found, (iii) correctly exclude base packages (remove versions and whitespaces in the while loop). `ACUMOS-4280 <https://jira.acumos.org/browse/ACUMOS-4280>`_
+* handle component variables to run without modifying `.GlobalEnv` (not allowed by the CRAN policies) `ACUMOS-4268 <https://jira.acumos.org/browse/ACUMOS-4268>`_
+* use of `thesthat`: test that the API works after 'run()'.
+
 Version 0.4-0, 03 September 2020
 --------------------------------
 * with `compose()`, generate a new file, `component.swagger.yaml`, that describes the component API using swagger 2.0. `ACUMOS-4212 <https://jira.acumos.org/browse/ACUMOS-4212>`_
 * serve a swagger UI at the path `/` and the swagger YAML description file at the path `/swagger.yaml`, using `RestRserve`. `ACUMOS-4212 <https://jira.acumos.org/browse/ACUMOS-4212>`_
+* the API can now receive and send data with "application/vnd.google.protobuf" and "application/json" content types. The content-type must be precised, and is considered as "application/json" by default.
 
 Version 0.3-0, 13 March 2020
 ----------------------------

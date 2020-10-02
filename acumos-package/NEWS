@@ -1,19 +1,34 @@
  NEWS
 ======
+0.4-1
+    o	debug `pkg.deps()`: (i) a less R version dependant base packages listing,
+    (ii) continue the while loop until the good order of package dependencies
+    is found, (iii) correctly exclude base packages (remove versions and
+    whitespaces in the while loop).
+
+    o	handle component variables to run without modifying `.GlobalEnv`
+    (not allowed by the CRAN policies).
+    
+    o	use of `thesthat`: test that the API works after 'run()'.
+
 0.4-0
-    o	with `compose()`, generate a new file, `component.swagger.yaml`, that 
+    o	with `compose()`, generate a new file, `component.swagger.yaml`, that
     describes the component API using swagger 2.0.
 
-    o	serve a swagger UI at the path `/` and the swagger YAML description 
+    o	serve a swagger UI at the path `/` and the swagger YAML description
     file at the path `/swagger.yaml`, using `RestRserve`.
-    
+
+    o	the API can now receive and send data with "application/vnd.google.protobuf"
+    and "application/json" content types. The content-type must be precised, and is
+    considered as "application/json" by default.
+
 0.3-0
-    o	add `composeFromSource()` and `pushFromSource()` functions, enabling 
-    respectively to compose and to push a bundle from an R file (considered 
-    as the component source) in which all the functions and auxiliary 
+    o	add `composeFromSource()` and `pushFromSource()` functions, enabling
+    respectively to compose and to push a bundle from an R file (considered
+    as the component source) in which all the functions and auxiliary
     objects needed to compose the bundle are defined.
 
-    o	change `push()` to look up and include in the POST request a potential 
+    o	change `push()` to look up and include in the POST request a potential
     `component.R` file contained in the bundle.
 
 0.2-8
@@ -23,11 +38,9 @@
 	elements for body of the `POST` request. This allows optional
 	parameters to be added to the onboarding service.
 
-
 0.2-7
     o	allow the `file' argument in run() to be a directory
 	containing the unpacked component.
-
 
 0.2-6
     o	added send.msg(..., response=TRUE) to allow more easy testing
@@ -36,12 +49,10 @@
     o	minor documentation updates such as mention of data_response
 	run-time option.
 
-
 0.2-5
     o	updated to generate meta.json version 0.5.0
 
     o	added service rpc entry in the proto file
-
 
 0.2-4
     o	update push() to take the bundle and upload in pieces until
@@ -49,11 +60,9 @@
 
     o	include schema version in meta.json
 
-
 0.2-3
     o	improve package dependency detection by removing versions and
 	whitespaces
-
 
 0.2-2
     o	add run(init.only=TRUE) option to setup the run-time
@@ -71,25 +80,21 @@
     o	add push(token=) to use token (obtained form auth()) for
 	authentication purposes.
 
-
 0.2-0
     o	switch to using bundle model component files (.amc) instead of
 	individual files (.json/.bin/.proto)
 
     o	addd debugging env var ACUMOS_DEBUG for verbose logging
 
-
 0.1-2
     o	add support for push()
 
     o	include non-loaded dependencies
 
-
 0.1-1
     o	add documentation
 
     o	add transform, fit, generate and service endpoints
-
 
 0.1-0
     o	initial version
