@@ -1,5 +1,17 @@
  NEWS
 ======
+0.4-1
+    o	debug `pkg.deps()`: (i) a less R version dependant base packages listing,
+    (ii) continue the while loop until the good order of package dependencies 
+    is found, (iii) correctly exclude base packages (remove versions and 
+    whitespaces in the while loop).
+
+    o	handle component variables to run without modifying `.GlobalEnv` 
+    (not allowed by the CRAN policies).
+    
+    o	use of `thesthat`: test that the API works after 'run()'.
+
+
 0.4-0
     o	with `compose()`, generate a new file, `component.swagger.yaml`, that 
     describes the component API using swagger 2.0.
@@ -7,6 +19,11 @@
     o	serve a swagger UI at the path `/` and the swagger YAML description 
     file at the path `/swagger.yaml`, using `RestRserve`.
     
+    o	the API can now receive and send data with "application/vnd.google.protobuf" 
+    and "application/json" content types. The content-type must be precised, and is 
+    considered as "application/json" by default.
+
+
 0.3-0
     o	add `composeFromSource()` and `pushFromSource()` functions, enabling 
     respectively to compose and to push a bundle from an R file (considered 
