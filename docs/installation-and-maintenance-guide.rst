@@ -38,11 +38,22 @@ Under **Debian/Ubuntu**, you may need to install first some packages:
 .. code:: bash 
 
 	apt-get update
-	apt-get install -y git-core libssl-dev libcurl4-openssl-dev make protobuf-compiler libprotoc-dev libprotobuf-dev
+	apt-get install -y libssl-dev libcurl4-openssl-dev make protobuf-compiler libprotoc-dev libprotobuf-dev
 
 Install the Acumos R client package in R:
 
 .. code:: bash
 
-	install.packages("remotes")
+	install.packages("acumos")
+	
+If you want to install the version under development, please use `remotes` or `devtools`:
+
+.. code:: bash
+
 	remotes::install_github("acumos/acumos-r-client", subdir="acumos-package")
+
+or
+
+.. code:: bash
+
+	devtools::install_github("acumos/acumos-r-client", subdir="acumos-package")
