@@ -32,18 +32,22 @@ Please see the documentation in the "docs" folder.
 
 ## Install
 
-Under Debian/Ubuntu, install `remotes` and `acumos` dependencies first:
+Under Debian/Ubuntu, please install `remotes` and `acumos` dependencies first:
 
     apt-get update
-	apt install -y git-core libssl-dev libcurl4-openssl-dev make protobuf-compiler libprotoc-dev libprotobuf-dev
+	apt install -y libssl-dev libcurl4-openssl-dev make protobuf-compiler libprotoc-dev libprotobuf-dev
 
-Then, in R, install `remotes`:
+Install `acumos`:
 
-    install.packages("remotes")
+    install.packages("acumos")
 
-Install this development version of `acumos` using `remotes`:
+To install this development version, please use `remotes` or `devtools`:
 
     remotes::install_github("acumos/acumos-r-client", subdir="acumos-package")
+
+or
+
+	devtools::install_github("acumos/acumos-r-client", subdir="acumos-package")
 
 ## Usage
 
@@ -57,8 +61,8 @@ and `component.swagger.yaml` with the Swagger API definition.
 Please consult R documentation page for details, i.e., use `?compose` in R.
 
 Example:
-    
-    install.packages("randomForest")
+
+    if(!require("randomForest")) install.packages("randomForest")
     library(randomForest)
     library(acumos)
     compose(predict=function(..., inputs=lapply(iris[-5], class)) as.character(predict(rf, as.data.frame(list(...)))),
