@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f90867e4_a53366a4",
+        "filename": "acumos-package/DESCRIPTION",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 212
+      },
+      "writtenOn": "2021-03-04T13:55:38Z",
+      "side": 1,
+      "message": "il n\u0027y a pas d\u0027entête avec copyright et licence dans ce fichier c\u0027est normal ? une contrainte du CRAN ?",
+      "revId": "c64ecdaeb7f47b5ef6f90a583050d0344b6a820f",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": true
+    }
+  ]
+}
