@@ -11,6 +11,7 @@ pushFromSource(
   addSource = TRUE,
   token,
   create = TRUE,
+  deploy = FALSE,
   license,
   headers,
   ...
@@ -27,7 +28,12 @@ pushFromSource(
 
 \item{token}{token obtained from auth (optional)}
 
-\item{create}{logical, isCreateMicroservice parameter, see Acumos onboarding documentation}
+\item{create}{logical, \code{isCreateMicroservice} parameter. If TRUE the model Docker image 
+is automatically created by the Acumos platform.  see Acumos onboarding documentation.
+See Acumos onboarding documentation.}
+
+\item{deploy}{logical. If TRUE the model is automatically deployed by the Acumos platform.
+See Acumos onboarding documentation.}
 
 \item{license}{optional string, name of a file to supply as the license. If not specified push()
 will also try to locate a license.json file in the component bundle if present.}

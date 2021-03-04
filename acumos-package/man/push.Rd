@@ -11,7 +11,7 @@
   \code{push} where required.
 }
 \usage{
-push(url, file = "component.amc", token, create=TRUE, license,
+push(url, file = "component.amc", token, create=TRUE, deploy=FALSE, license,
      headers, ...)
 auth(url, user, password)
 }
@@ -20,8 +20,12 @@ auth(url, user, password)
   \item{url}{URL for the POST request}
   \item{file}{component bundle file as created by \code{compose}}
   \item{token}{token obtained from \code{auth} (optional)}
-  \item{create}{logical, \code{isCreateMicroservice} parameter,
-   see Acumos onboarding documentation}
+  \item{create}{logical, \code{isCreateMicroservice} parameter.
+   If TRUE the model Docker image is automatically created by the Acumos platform.
+   See Acumos onboarding documentation.}
+  \item{deploy}{logical.
+   If TRUE the model is automatically deployed by the Acumos platform.
+   See Acumos onboarding documentation.}
   \item{license}{optional string, name of a file to supply as the
     license. If not specified \code{push()} will also try to locate
     a \code{license.json} file in the component bundle if present.}
