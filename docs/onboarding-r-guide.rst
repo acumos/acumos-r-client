@@ -101,7 +101,7 @@ Once the model bundle is created, you can use the `push()` API client to on-boar
         acumos::push(url = "https://<hostname>/onboarding-app/v2/models",
                      file = "component.zip",
                      token = "<username>:<token>",
-                     create = FALSE,
+                     create = FALSE, deploy = FALSE,
                      license = "path/to/your/license.json")
 
 url can be found in the ON-BOARDING MODEL page of your Acumos portal and looks like :

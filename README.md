@@ -117,7 +117,7 @@ Once the model bundle is created, you can use the `push()` API client to on-boar
     acumos::push(url = "https://<hostname>/onboarding-app/v2/models",
         file = "component.amc",
         token = "<username>:<token>",
-        create = FALSE,
+        create = FALSE, deploy = FALSE,
         license = "path/to/your/license.json")
 
 `url`: can be found in the ON-BOARDING MODEL page of your Acumos portal and looks like :
@@ -130,8 +130,12 @@ Once the model bundle is created, you can use the `push()` API client to on-boar
 `token`: API token available in the Acumos portal in your profile section
 
 `create` : logical parameter (Boolean) to trigger the creation of microservice at the end of
-on-boarding process. By default create=TRUE, if you don't want to create the microservice modify the
-value to FALSE (create =FALSE)
+on-boarding process. By default `create = TRUE`, if you don't want to create the microservice modify the
+value to FALSE (`create = FALSE`)
+
+`deploy` : logical parameter (Boolean) to trigger the deployment of microservice at the end of
+on-boarding process. By default `deploy = FALSE`, if you want the Acumos platform to deploy automatically 
+the microservice modify the value to TRUE (`deploy = TRUE`)
 
 `license`: path to the license profile file : The license profile file name must be "license.json".
 
@@ -144,7 +148,8 @@ source code inside the model bundle.
 	acumos::pushFromSource(url = "https://<hostname>/onboarding-app/v2/models",
 		file = "path/to/your/R/script/acumos.R",
 		name = "MyComponentName", addSource = FALSE,
-		token = "<username>:<token>", create = FALSE,
+		token = "<username>:<token>",
+		create = FALSE, deploy = FALSE,
 		license = "path/to/your/license.json")
 
 The path to an example component source code file can be found by executing the following R command:
