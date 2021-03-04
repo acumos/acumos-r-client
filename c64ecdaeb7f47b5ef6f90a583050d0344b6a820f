@@ -16,6 +16,24 @@
       "revId": "c64ecdaeb7f47b5ef6f90a583050d0344b6a820f",
       "serverId": "655300a2-7a56-4504-9153-881edd907bea",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6b15702_4c8a8942",
+        "filename": "acumos-package/DESCRIPTION",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 134
+      },
+      "writtenOn": "2021-03-04T13:59:45Z",
+      "side": 1,
+      "message": "Oui, c\u0027est un fichier de package; rien d\u0027autre que les champs prévus.",
+      "parentUuid": "f90867e4_a53366a4",
+      "revId": "c64ecdaeb7f47b5ef6f90a583050d0344b6a820f",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
     }
   ]
 }
