@@ -90,7 +90,11 @@ composeFromSource<-function(file="acumos.R",
 #' @param name string, name of the component
 #' @param addSource boolean, to add source file to the (ZIP) bundle or not
 #' @param token token obtained from auth (optional)
-#' @param create logical, isCreateMicroservice parameter, see Acumos onboarding documentation
+#' @param create logical, \code{isCreateMicroservice} parameter. If TRUE the model Docker image 
+#' is automatically created by the Acumos platform.  see Acumos onboarding documentation.
+#' See Acumos onboarding documentation.
+#' @param deploy logical. If TRUE the model is automatically deployed by the Acumos platform.
+#' See Acumos onboarding documentation.
 #' @param license optional string, name of a file to supply as the license. If not specified push()
 #' will also try to locate a license.json file in the component bundle if present.
 #' @param headers optional, named list or named character vector of HTTP headers that are to be added
@@ -117,7 +121,7 @@ composeFromSource<-function(file="acumos.R",
 #'
 #' @export
 #'
-pushFromSource<-function(url, file, name = "R Component", addSource=TRUE, token, create=TRUE, license,
+pushFromSource<-function(url, file, name = "R Component", addSource=TRUE, token, create=TRUE, deploy=FALSE, license,
                          headers, ...){
   # create temporary directory
   dir <- tempfile("acumos-tmp")
@@ -127,7 +131,7 @@ pushFromSource<-function(url, file, name = "R Component", addSource=TRUE, token,
   composeFromSource(file=file, outputfile = file.path(dir,"acumos-app.zip"), name=name, addSource=addSource)
   # run
   push(url=url, file = file.path(dir,"acumos-app.zip"),
-       token=token, create=create, license=license, headers=headers, ...)
+       token=token, create=create, deploy=deploy, license=license, headers=headers, ...)
 }
 runFromSource<-function(file="acumos.R",where=getwd(),
                         runtime=list(input_port=3330, data_response=TRUE), init.only=FALSE){

@@ -339,7 +339,7 @@ auth <- function(url, user, password) {
   } else stop("Authentiaction request failed: ", rawToChar(res$content))
 }
 
-push <- function(url, file="component.amc", token, create=TRUE, license, headers, ...) {
+push <- function(url, file="component.amc", token, create=TRUE, deploy=FALSE, license, headers, ...) {
   ## FIXME: the server currently accepts only multiplart form
   ## with the uncompressed contents - until the server is fixed to
   ## support the component bundle properly we have to unpack and push
@@ -359,6 +359,7 @@ push <- function(url, file="component.amc", token, create=TRUE, license, headers
   headers <- if (missing(headers)) list() else as.list(headers)
   headers[["Content-Type"]] <- "multipart/form-data"
   headers[["isCreateMicroservice"]] <- if (isTRUE(create)) "true" else "false"
+  headers[["deploy"]] <- if (isTRUE(deploy)) "true" else "false"
   if (!missing(token)) headers$Authorization <- token
   body <- list(
     metadata = upload_file(metadata, type = "application/json; charset=UTF-8"),
@@ -380,7 +381,9 @@ push <- function(url, file="component.amc", token, create=TRUE, license, headers
   if (http_error(req)) stop("HTTP error in the POST request: ", content(req))
   if (content(req)$status=="SUCCESS") {
     cat("Model pushed successfully to :",url,"\n")
+    if(headers[["deploy"]]=="true") {cat("Model pushed for automatic deployment.","\n")}
     if(headers[["isCreateMicroservice"]]=="true") {cat("Acumos model docker image successfully created :",content(req)$dockerImageUri,"\n")}
+    
   }
   invisible(content(req))
 }
