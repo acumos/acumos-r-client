@@ -32,7 +32,8 @@ pushFromSource(
 is automatically created by the Acumos platform.  see Acumos onboarding documentation.
 See Acumos onboarding documentation.}
 
-\item{deploy}{logical. If TRUE the model is automatically deployed by the Acumos platform.
+\item{deploy}{logical. If TRUE the model is automatically deployed by the Acumos platform. 
+This parameter cannot take the value TRUE, when the parameter \code{create} takes the value FALSE.
 See Acumos onboarding documentation.}
 
 \item{license}{optional string, name of a file to supply as the license. If not specified push()

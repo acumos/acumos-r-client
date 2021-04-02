@@ -119,7 +119,8 @@ the microservice Docker image modify the value to FALSE (`create = FALSE`)
 
 deploy : logical parameter (Boolean) to trigger the deployment of microservice at the end of
 on-boarding process. By default `deploy = FALSE`, if you want the Acumos platform to deploy automatically 
-the microservice, modify the value to TRUE (`deploy = TRUE`)
+the microservice, modify the value to TRUE (`deploy = TRUE`). Note that this parameter cannot take 
+the value TRUE, when the parameter `create` takes the value FALSE.
 
 license : path to the license profile file : The license profile file name must be "license.json".
 
