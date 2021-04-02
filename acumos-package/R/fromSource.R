@@ -93,7 +93,8 @@ composeFromSource<-function(file="acumos.R",
 #' @param create logical, \code{isCreateMicroservice} parameter. If TRUE the model Docker image 
 #' is automatically created by the Acumos platform.  see Acumos onboarding documentation.
 #' See Acumos onboarding documentation.
-#' @param deploy logical. If TRUE the model is automatically deployed by the Acumos platform.
+#' @param deploy logical. If TRUE the model is automatically deployed by the Acumos platform. 
+#' This parameter cannot take the value TRUE, when the parameter \code{create} takes the value FALSE.
 #' See Acumos onboarding documentation.
 #' @param license optional string, name of a file to supply as the license. If not specified push()
 #' will also try to locate a license.json file in the component bundle if present.

@@ -24,7 +24,10 @@ auth(url, user, password)
    If TRUE the model Docker image is automatically created by the Acumos platform.
    See Acumos onboarding documentation.}
   \item{deploy}{logical.
-   If TRUE the model is automatically deployed by the Acumos platform.
+   If TRUE the model is automatically deployed by the Acumos platform based on an
+  external jenkins server configuration.
+   This parameter cannot take the value TRUE, when the parameter
+   \code{create} takes the value FALSE.
    See Acumos onboarding documentation.}
   \item{license}{optional string, name of a file to supply as the
     license. If not specified \code{push()} will also try to locate

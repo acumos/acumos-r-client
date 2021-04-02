@@ -343,6 +343,10 @@ push <- function(url, file="component.amc", token, create=TRUE, deploy=FALSE, li
   ## FIXME: the server currently accepts only multiplart form
   ## with the uncompressed contents - until the server is fixed to
   ## support the component bundle properly we have to unpack and push
+  if(deploy & !create){
+    deploy<-FALSE
+    warning("The parameter 'deploy' is set to FALSE as the parameter 'create' is FALSE.")
+  }
   dir <- tempfile("acumos-push")
   dir.create(dir)
   on.exit(unlink(dir, TRUE))
