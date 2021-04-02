@@ -25,6 +25,8 @@ auth(url, user, password)
    See Acumos onboarding documentation.}
   \item{deploy}{logical.
    If TRUE the model is automatically deployed by the Acumos platform.
+   This parameter cannot take the value TRUE, when the parameter 
+   \code{create} takes the value FALSE.
    See Acumos onboarding documentation.}
   \item{license}{optional string, name of a file to supply as the
     license. If not specified \code{push()} will also try to locate
