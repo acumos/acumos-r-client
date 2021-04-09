@@ -1,5 +1,13 @@
  NEWS
 ======
+0.4-2
+    o	Set that when create==FALSE deploy cannot be set to TRUE.
+    
+    o	Correct the `push` function so that the swagger YAML file is uploaded 
+    as part of the bundle.
+    
+    o	By default, set the bundle (component) file extension to '.zip' instead of '.amc'.
+    
 0.4-1
     o	debug `pkg.deps()`: (i) a less R version dependant base packages listing,
     (ii) continue the while loop until the good order of package dependencies

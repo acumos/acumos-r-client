@@ -43,7 +43,7 @@ fetch.types <- function(f, default.in=c(x="character"), default.out=c(x="charact
 }
 
 ## compose a component
-compose <- function(predict, transform, fit, generate, service, initialize, aux=list(), name="R Component", componentVersion="unknown version", file="component.amc") {
+compose <- function(predict, transform, fit, generate, service, initialize, aux=list(), name="R Component", componentVersion="unknown version", file="component.zip") {
   dir <- tempfile("acumos-component")
   if (!all(dir.create(dir))) stop("unable to create demporary directory in `",dir,"' to assemble the component bundle")
 
@@ -135,7 +135,7 @@ protoService <- function(name, inputType = paste0(name, "Input"), outputType = p
   }
 }
 
-run <- function(where=getwd(), file="component.amc", runtime="runtime.json", init.only=FALSE) {
+run <- function(where=getwd(), file="component.zip", runtime="runtime.json", init.only=FALSE) {
   file <- path.expand(file)
   .dinfo(1L, "INFO: starting component in '", where,"', archive:", file, ", runtime:", runtime)
   if (dir.exists(file)) {
@@ -151,7 +151,7 @@ run <- function(where=getwd(), file="component.amc", runtime="runtime.json", ini
   metadata <- file.path(dir, "meta.json")
   payload <- file.path(dir, "component.bin")
   proto <- file.path(dir, "component.proto")
-  swagger<-file.path(dir,"component.swagger.yaml")
+  swagger <- file.path(dir,"component.swagger.yaml")
   c.files <- c(metadata, payload, proto)
   ok <- file.exists(c.files)
   if (!all(ok)) stop(paste0("invalid archive (missing ",
@@ -339,7 +339,7 @@ auth <- function(url, user, password) {
   } else stop("Authentiaction request failed: ", rawToChar(res$content))
 }
 
-push <- function(url, file="component.amc", token, create=TRUE, deploy=FALSE, license, headers, ...) {
+push <- function(url, file="component.zip", token, create=TRUE, deploy=FALSE, license, headers, ...) {
   ## FIXME: the server currently accepts only multiplart form
   ## with the uncompressed contents - until the server is fixed to
   ## support the component bundle properly we have to unpack and push
@@ -354,6 +354,7 @@ push <- function(url, file="component.amc", token, create=TRUE, deploy=FALSE, li
   metadata <- file.path(dir, "meta.json")
   payload <- file.path(dir, "component.bin")
   proto <- file.path(dir, "component.proto")
+  swagger <- file.path(dir, "component.swagger.yaml")
   addSource<-file.exists(file.path(dir, "component.R"))
   if(addSource){
     source <- upload_file(file.path(dir, "component.R"), type = "text/plain; charset=UTF-8")
@@ -368,6 +369,7 @@ push <- function(url, file="component.amc", token, create=TRUE, deploy=FALSE, li
   body <- list(
     metadata = upload_file(metadata, type = "application/json; charset=UTF-8"),
     schema = upload_file(proto, type = "text/plain; charset=UTF-8"),
+    swagger = upload_file(swagger, type = "text/plain; charset=UTF-8"),
     model = upload_file(payload, type = "application/octet"),
     source = source)
   body <- body[!sapply(body, is.null)]
