@@ -9,7 +9,7 @@
 \usage{
 compose(predict, transform, fit, generate, service, initialize,
         aux = list(), name = "R Component", componentVersion="unknown version",
-        file = "component.amc")
+        file = "component.zip")
 }
 \arguments{
   \item{predict}{predict function (optional)}
@@ -85,6 +85,6 @@ compose(predict=function(..., inputs=lapply(iris[-5], class)){
                 },
         aux = list(rf = randomForest(Species ~ ., data=iris)),
         name="Random Forest")
-file.remove("component.amc")
+file.remove("component.zip")
 }
 \keyword{interface}

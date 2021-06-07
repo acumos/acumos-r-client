@@ -12,7 +12,7 @@
   the platform itself.
 }
 \usage{
-run(where = getwd(), file = "component.amc", runtime = "runtime.json",
+run(where = getwd(), file = "component.zip", runtime = "runtime.json",
     init.only = FALSE)
 data2msg(data, output)
 msg2data(msg, input)

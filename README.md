@@ -55,7 +55,7 @@ or
 
 To create a deployment component, use `acumos::compose()` with the functions to expose. If type specs are not defined, they default to `c(x="character")`.
 
-The component consists of a bundle `component.amc` which is a ZIP file with `meta.json` defining the component and its metadata, `component.bin` the binary payload, `component.proto` with the protobuf specs
+The component consists of a bundle `component.zip` which is a ZIP file with `meta.json` defining the component and its metadata, `component.bin` the binary payload, `component.proto` with the protobuf specs
 and `component.swagger.yaml` with the Swagger API definition.
 
 Please consult R documentation page for details, i.e., use `?compose` in R.
@@ -68,7 +68,7 @@ Example:
     compose(predict=function(..., inputs=lapply(iris[-5], class)) as.character(predict(rf, as.data.frame(list(...)))),
         aux = list(rf = randomForest(Species ~ ., data=iris)),
         name="Random Forest",
-        file="component.amc"
+        file="component.zip"
         )
 
 ### Create a component by writing a component R source code
@@ -82,7 +82,7 @@ they will also correspond to the other function type arguments of `compose()`, n
 
     acumos::composeFromSource(file = "path/to/your/R/script/acumos.R",
         name = "MyComponentName",
-        outputfile = "component.amc",
+        outputfile = "component.zip",
         addSource = TRUE)
 
 The `addSource` parameter is a boolean that allows you to add the R source code (*component.R*) in your model bundle.
@@ -97,7 +97,7 @@ To run the component you have to create a `runtime.json` file with at least `{"i
 
     {"input_port":8100, "output_url":"http://127.0.0.1:8101/predict"}
 
-With the component bundle `component.amc` plus `runtime.json` in place the component can be run using
+With the component bundle `component.zip` plus `runtime.json` in place the component can be run using
 
     R -e 'acumos:::run()'
 
@@ -115,7 +115,7 @@ Once the model bundle is created, you can use the `push()` API client to on-boar
 (Command Line Interface) on-boarding. An example R command is the following:
 
     acumos::push(url = "https://<hostname>/onboarding-app/v2/models",
-        file = "component.amc",
+        file = "component.zip",
         token = "<username>:<token>",
         create = FALSE, deploy = FALSE,
         license = "path/to/your/license.json")
@@ -123,7 +123,7 @@ Once the model bundle is created, you can use the `push()` API client to on-boar
 `url`: can be found in the ON-BOARDING MODEL page of your Acumos portal and looks like :
 `<hostname>/onboarding-app/v2/models`
 
-`file`: component.amc (your model bundle)
+`file`: component.zip (your model bundle)
 
 `username` : your Acumos username
 

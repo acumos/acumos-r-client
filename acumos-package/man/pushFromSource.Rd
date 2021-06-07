@@ -32,8 +32,7 @@ pushFromSource(
 is automatically created by the Acumos platform.  see Acumos onboarding documentation.
 See Acumos onboarding documentation.}
 
-\item{deploy}{logical. If TRUE the model is automatically deployed by the Acumos platform based on
-an external Jenkins server configuration. 
+\item{deploy}{logical. If TRUE the model is automatically deployed by the Acumos platform. 
 This parameter cannot take the value TRUE, when the parameter \code{create} takes the value FALSE.
 See Acumos onboarding documentation.}
 

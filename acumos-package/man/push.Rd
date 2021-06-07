@@ -11,7 +11,7 @@
   \code{push} where required.
 }
 \usage{
-push(url, file = "component.amc", token, create=TRUE, deploy=FALSE, license,
+push(url, file = "component.zip", token, create=TRUE, deploy=FALSE, license,
      headers, ...)
 auth(url, user, password)
 }
