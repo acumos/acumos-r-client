@@ -1,5 +1,19 @@
  NEWS
 ======
+0.4-3
+    o	The zip file produced by `compose()` will contain a another zip file 
+    (model.zip) including the component.bin and the compenent.swagger.yaml files. 
+    This mimics the current python client behavior, so that the 
+    compenent.swagger.yaml file can be uploaded without changes at 
+    Acumos on-boarding and Acumos Portal.
+
+    o	In the `push` function, if component.swagger.yaml exists it will be zipped 
+    along with component.bin into model.zip. And the request 'payload' is 
+    model.zip in this case.
+    
+    o	In the `push` function, if a model.zip file exists in the model bundle,
+    it will be unzipped.
+	
 0.4-2
     o	Set that when create==FALSE deploy cannot be set to TRUE.
 
