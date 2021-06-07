@@ -44,7 +44,7 @@ fetch.types <- function(f, default.in=c(x="character"), default.out=c(x="charact
 
 ## compose a component
 compose <- function(predict, transform, fit, generate, service, initialize, aux=list(), name="R Component", componentVersion="unknown version", file="component.zip") {
-  dir <- tempfile("acumos-component")
+  dir <- tempfile("acumos-component-")
   if (!all(dir.create(dir))) stop("unable to create demporary directory in `",dir,"' to assemble the component bundle")
 
   meta <- list(schema="acumos.schema.model:0.5.0", name=name,
@@ -94,7 +94,9 @@ compose <- function(predict, transform, fit, generate, service, initialize, aux=
                    ))
   ## -j ignores paths (is it portable in Widnows?)
   if (file.exists(file) && unlink(file)) stop("target file already exists and cannot be removed")
-  zip(file, c(file.path(dir, "component.bin"), file.path(dir, "meta.json"), file.path(dir, "component.proto"), file.path(dir, "component.swagger.yaml")), extras="-j")
+  zip(file.path(dir, "component.zip"), c(file.path(dir, "component.bin"), file.path(dir, "component.swagger.yaml")), extras="-j")
+  zip(paste0(basename(dir),".zip"), c(file.path(dir, "component.zip"), file.path(dir, "meta.json"), file.path(dir, "component.proto")), extras="-j")
+  file.rename(paste0(basename(dir),".zip"), file)
   unlink(dir, TRUE)
   invisible(meta)
 }
@@ -147,6 +149,10 @@ run <- function(where=getwd(), file="component.zip", runtime="runtime.json", ini
     on.exit(unlink(dir, TRUE))
     unzip(file, exdir=dir)
     .dinfo(2L, "INFO: component unpacked in ", dir)
+  }
+  payloadzip <- file.path(dir, "component.zip")
+  if(file.exists(payloadzip)){
+    unzip(payloadzip, exdir=dir)
   }
   metadata <- file.path(dir, "meta.json")
   payload <- file.path(dir, "component.bin")
@@ -351,16 +357,19 @@ push <- function(url, file="component.zip", token, create=TRUE, deploy=FALSE, li
   dir.create(dir)
   on.exit(unlink(dir, TRUE))
   unzip(file, exdir=dir)
-  metadata <- file.path(dir, "meta.json")
-  payload <- file.path(dir, "component.bin")
-  proto <- file.path(dir, "component.proto")
-  swagger <- file.path(dir, "component.swagger.yaml")
-  addSource<-file.exists(file.path(dir, "component.R"))
-  if(addSource){
+  if(file.exists(file.path(dir, "component.swagger.yaml")) & file.exists(file.path(dir, "component.bin")) & !file.exists(file.path(dir, "component.zip"))){
+    zip(file.path(dir,"component.zip"), c(file.path(dir, "component.swagger.yaml"), file.path(dir, "component.bin")), extras="-j")
+    payload <- file.path(dir, "component.zip")
+  } else if(file.exists(file.path(dir, "component.bin")) & !file.exists(file.path(dir, "component.zip"))){
+    payload <- file.path(dir, "component.bin")
+  }
+  if(file.exists(file.path(dir, "component.R"))){
     source <- upload_file(file.path(dir, "component.R"), type = "text/plain; charset=UTF-8")
   }else{
     source <- NULL
   }
+  metadata <- file.path(dir, "meta.json")
+  proto <- file.path(dir, "component.proto")
   headers <- if (missing(headers)) list() else as.list(headers)
   headers[["Content-Type"]] <- "multipart/form-data"
   headers[["isCreateMicroservice"]] <- if (isTRUE(create)) "true" else "false"
@@ -369,7 +378,6 @@ push <- function(url, file="component.zip", token, create=TRUE, deploy=FALSE, li
   body <- list(
     metadata = upload_file(metadata, type = "application/json; charset=UTF-8"),
     schema = upload_file(proto, type = "text/plain; charset=UTF-8"),
-    swagger = upload_file(swagger, type = "text/plain; charset=UTF-8"),
     model = upload_file(payload, type = "application/octet"),
     source = source)
   body <- body[!sapply(body, is.null)]
