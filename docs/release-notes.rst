@@ -22,6 +22,22 @@ Acumos R Client Release Notes
 
 These release notes cover the Acumos R client
 
+Version 0.4-4, 01 July 2021
+------------------------------
+* Debug DEBIAN test-api fail : write the intermediate zip file produced by `compose()` into the temp dir
+
+Version 0.4-3, 07 June 2021
+------------------------------
+* The zip file produced by `compose()` will contain a another zip file (model.zip) including the component.bin and the compenent.swagger.yaml files. This mimics the current python client behavior, so that the compenent.swagger.yaml file can be uploaded without changes at Acumos on-boarding and Acumos Portal.
+* In the `push` function, if component.swagger.yaml exists it will be zipped along with component.bin into model.zip. And the request 'payload' is model.zip in this case.
+* In the `push` function, if a model.zip file exists in the model bundle, it will be unzipped.
+
+Version 0.4-2, 02 April 2021
+------------------------------
+* Set that when create==FALSE deploy cannot be set to TRUE.
+* Correct the `push` function so that the swagger YAML file is uploaded as part of the bundle.
+* By default, set the bundle (component) file extension to '.zip' instead of '.amc'.
+
 Version 0.4-1, 02 October 2020
 ------------------------------
 * debug `pkg.deps()`: (i) a less R version dependant base packages listing, (ii) continue the while loop until the good order of package dependencies is found, (iii) correctly exclude base packages (remove versions and whitespaces in the while loop). `ACUMOS-4280 <https://jira.acumos.org/browse/ACUMOS-4280>`_

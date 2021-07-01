@@ -95,8 +95,8 @@ compose <- function(predict, transform, fit, generate, service, initialize, aux=
   ## -j ignores paths (is it portable in Widnows?)
   if (file.exists(file) && unlink(file)) stop("target file already exists and cannot be removed")
   zip(file.path(dir, "model.zip"), c(file.path(dir, "component.bin"), file.path(dir, "component.swagger.yaml")), extras="-j")
-  zip(paste0(basename(dir),".zip"), c(file.path(dir, "model.zip"), file.path(dir, "meta.json"), file.path(dir, "component.proto")), extras="-j")
-  file.rename(paste0(basename(dir),".zip"), file)
+  zip(file.path(dir, paste0(basename(dir),".zip")), c(file.path(dir, "model.zip"), file.path(dir, "meta.json"), file.path(dir, "component.proto")), extras="-j")
+  file.rename(file.path(dir, paste0(basename(dir),".zip")), file)
   unlink(dir, TRUE)
   invisible(meta)
 }
