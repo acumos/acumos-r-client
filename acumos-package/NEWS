@@ -1,5 +1,10 @@
  NEWS
 ======
+0.4-4
+	  o Enclosed the URL in DESCRIPTION in angle brackets (<...>)
+    o Debug DEBIAN test-api fail : write the intermediate zip file produced 
+	  by `compose()` into the temp dir
+
 0.4-3
     o	The zip file produced by `compose()` will contain a another zip file 
     (model.zip) including the component.bin and the compenent.swagger.yaml files. 
